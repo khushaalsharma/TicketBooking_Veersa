@@ -1,0 +1,243 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|c:\\coding\\ticket booking\\ticketbookingweb_api\\mappings\\automapperprofiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|solutionrelative:mappings\\automapperprofiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|c:\\coding\\ticket booking\\ticketbookingweb_api\\controllers\\eventscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|solutionrelative:controllers\\eventscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|c:\\coding\\ticket booking\\ticketbookingweb_api\\controllers\\ticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|solutionrelative:controllers\\ticketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|c:\\coding\\ticket booking\\ticketbookingweb_api\\data\\dtos\\addeventdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|solutionrelative:data\\dtos\\addeventdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|c:\\coding\\ticket booking\\ticketbookingweb_api\\data\\dtos\\eventdatadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|solutionrelative:data\\dtos\\eventdatadto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|c:\\coding\\ticket booking\\ticketbookingweb_api\\data\\dtos\\ticketdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|solutionrelative:data\\dtos\\ticketdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|c:\\coding\\ticket booking\\ticketbookingweb_api\\repositories\\sqleventsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|solutionrelative:repositories\\sqleventsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|c:\\coding\\ticket booking\\ticketbookingweb_api\\repositories\\ieventsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|solutionrelative:repositories\\ieventsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|c:\\coding\\ticket booking\\ticketbookingweb_api\\repositories\\iticketrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|solutionrelative:repositories\\iticketrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|c:\\coding\\ticket booking\\ticketbookingweb_api\\repositories\\sqlticketrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|solutionrelative:repositories\\sqlticketrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|c:\\coding\\ticket booking\\ticketbookingweb_api\\data\\models\\tickets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|solutionrelative:data\\models\\tickets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|c:\\coding\\ticket booking\\ticketbookingweb_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|c:\\coding\\ticket booking\\ticketbookingweb_api\\migrations\\20240919111008_adding eventsid attribute in tickets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC904AA1-7142-490A-A391-8FD3F8DDE812}|TicketBookingWeb_API.csproj|solutionrelative:migrations\\20240919111008_adding eventsid attribute in tickets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AddEventDTO.cs",
+              "DocumentMoniker": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Data\\DTOs\\AddEventDTO.cs",
+              "RelativeDocumentMoniker": "Data\\DTOs\\AddEventDTO.cs",
+              "ToolTip": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Data\\DTOs\\AddEventDTO.cs",
+              "RelativeToolTip": "Data\\DTOs\\AddEventDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-20T05:31:48.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AutoMapperProfiles.cs",
+              "DocumentMoniker": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Mappings\\AutoMapperProfiles.cs",
+              "RelativeDocumentMoniker": "Mappings\\AutoMapperProfiles.cs",
+              "ToolTip": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Mappings\\AutoMapperProfiles.cs*",
+              "RelativeToolTip": "Mappings\\AutoMapperProfiles.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T11:17:42.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "20240919111008_adding EventsId attribute in Tickets.cs",
+              "DocumentMoniker": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Migrations\\20240919111008_adding EventsId attribute in Tickets.cs",
+              "RelativeDocumentMoniker": "Migrations\\20240919111008_adding EventsId attribute in Tickets.cs",
+              "ToolTip": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Migrations\\20240919111008_adding EventsId attribute in Tickets.cs",
+              "RelativeToolTip": "Migrations\\20240919111008_adding EventsId attribute in Tickets.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T11:10:08.844Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EventDataDTO.cs",
+              "DocumentMoniker": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Data\\DTOs\\EventDataDTO.cs",
+              "RelativeDocumentMoniker": "Data\\DTOs\\EventDataDTO.cs",
+              "ToolTip": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Data\\DTOs\\EventDataDTO.cs",
+              "RelativeToolTip": "Data\\DTOs\\EventDataDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T10:47:20.74Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TicketController.cs",
+              "DocumentMoniker": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Controllers\\TicketController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TicketController.cs",
+              "ToolTip": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Controllers\\TicketController.cs",
+              "RelativeToolTip": "Controllers\\TicketController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAqwBoAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T08:59:24.31Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TicketDTO.cs",
+              "DocumentMoniker": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Data\\DTOs\\TicketDTO.cs",
+              "RelativeDocumentMoniker": "Data\\DTOs\\TicketDTO.cs",
+              "ToolTip": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Data\\DTOs\\TicketDTO.cs",
+              "RelativeToolTip": "Data\\DTOs\\TicketDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T08:58:30.689Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "SQLTicketRepository.cs",
+              "DocumentMoniker": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Repositories\\SQLTicketRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\SQLTicketRepository.cs",
+              "ToolTip": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Repositories\\SQLTicketRepository.cs",
+              "RelativeToolTip": "Repositories\\SQLTicketRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T08:45:55.792Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Tickets.cs",
+              "DocumentMoniker": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Data\\Models\\Tickets.cs",
+              "RelativeDocumentMoniker": "Data\\Models\\Tickets.cs",
+              "ToolTip": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Data\\Models\\Tickets.cs",
+              "RelativeToolTip": "Data\\Models\\Tickets.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T08:32:36.447Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ITicketRepository.cs",
+              "DocumentMoniker": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Repositories\\ITicketRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\ITicketRepository.cs",
+              "ToolTip": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Repositories\\ITicketRepository.cs",
+              "RelativeToolTip": "Repositories\\ITicketRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T08:28:00.364Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SQLEventsRepository.cs",
+              "DocumentMoniker": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Repositories\\SQLEventsRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\SQLEventsRepository.cs",
+              "ToolTip": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Repositories\\SQLEventsRepository.cs",
+              "RelativeToolTip": "Repositories\\SQLEventsRepository.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T08:19:26.736Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IEventsRepository.cs",
+              "DocumentMoniker": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Repositories\\IEventsRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\IEventsRepository.cs",
+              "ToolTip": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Repositories\\IEventsRepository.cs",
+              "RelativeToolTip": "Repositories\\IEventsRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T08:18:12.824Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EventsController.cs",
+              "DocumentMoniker": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Controllers\\EventsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\EventsController.cs",
+              "ToolTip": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Controllers\\EventsController.cs",
+              "RelativeToolTip": "Controllers\\EventsController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAowCMAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T07:12:41.977Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Coding\\Ticket Booking\\TicketBookingWeb_API\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAYwCkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-19T07:03:42.549Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
