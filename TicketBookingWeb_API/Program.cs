@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using TicketBookingWeb_API.Data.Models;
 using TicketBookingWeb_API.DatabaseContext;
 using TicketBookingWeb_API.Mappings;
 using TicketBookingWeb_API.Repositories;
@@ -13,6 +15,12 @@ builder.Services.AddControllers();
 //dbContext
 builder.Services.AddDbContext<TicketBookingDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("TickeTBookingAppString")));
+
+//Adding Identity package
+builder.Services.AddIdentity<UserData, IdentityRole>()
+    .AddEntityFrameworkStores<TicketBookingDbContext>()
+    .AddDefaultTokenProviders();
+
 
 //AutoMapper
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));

@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using TicketBookingWeb_API.Data.Models;
 
 namespace TicketBookingWeb_API.DatabaseContext
 {
-    public class TicketBookingDbContext : DbContext
+    public class TicketBookingDbContext : IdentityDbContext<IdentityUser>
     {
         //constructor DbContext
         public TicketBookingDbContext(DbContextOptions<TicketBookingDbContext> dbContextOptions) : base(dbContextOptions)

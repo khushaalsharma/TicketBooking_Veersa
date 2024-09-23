@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("TicketBookingWeb_API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bccd281c853ccb94b35380b7d2392f98f975dd30")]
 [assembly: System.Reflection.AssemblyProductAttribute("TicketBookingWeb_API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TicketBookingWeb_API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
