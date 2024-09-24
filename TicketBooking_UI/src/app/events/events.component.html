@@ -1,0 +1,9 @@
+@if(bookTicket){
+    <app-book-ticket [eventData]="bookTicketData"/>
+}
+<div id="app-events">
+    @for(eventData of eventsData; track eventData.id){
+        <app-event [eventData]="eventData" (bookEvent) = "bookingTicket($event)"/>
+    }
+</div>
+

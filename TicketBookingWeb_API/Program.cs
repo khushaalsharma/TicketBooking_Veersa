@@ -5,6 +5,8 @@ using TicketBookingWeb_API.DatabaseContext;
 using TicketBookingWeb_API.Mappings;
 using TicketBookingWeb_API.Repositories;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -21,6 +23,19 @@ builder.Services.AddIdentity<UserData, IdentityRole>()
     .AddEntityFrameworkStores<TicketBookingDbContext>()
     .AddDefaultTokenProviders();
 
+//adding CORS to enable UI to fetch and send data
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("https://localhost:4200", "http://localhost:4200")
+                  .AllowAnyHeader()
+                  .AllowAnyMethod()
+                  .AllowCredentials();
+        }
+    );
+});
 
 //AutoMapper
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
@@ -42,6 +57,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+//enable cors it miust be added before other middlewares
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
