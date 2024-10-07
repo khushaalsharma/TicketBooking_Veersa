@@ -53,6 +53,7 @@ namespace TicketBooking_WebAPI.Controllers
 
         [HttpGet]
         [Route("getAllEvents")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAllEvents()
         {
             var eventsData = await eventsRepository.GetAllEvents();

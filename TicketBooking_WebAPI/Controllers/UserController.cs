@@ -38,6 +38,43 @@ namespace TicketBooking_WebAPI.Controllers
             return BadRequest("User not found");
         }
 
+        [HttpPut]
+        [Route("updateUser")]
+        public async Task<IActionResult> updateUser(UserData newUserData)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            var cookieVal = Request.Cookies["BookerId"];
+            var decodeVal = Convert.FromBase64String(cookieVal);
+
+            var updateSuccess = await userRepository.UpdateProfile(newUserData, Encoding.UTF8.GetString(decodeVal));
+
+            if (updateSuccess.Succeeded)
+            {
+                return Ok("Update Succesful");
+            }
+
+            return BadRequest("Can't update");
+        }
+
+        [HttpPut]
+        [Route("changePassword")]
+        public async Task<IActionResult> changePassword(string oldPassword, string newPassword)
+        {
+            var cookieVal = Request.Cookies["BookerId"];
+            var decodeVal = Convert.FromBase64String(cookieVal);
+
+            var passwordChangeSuccess = await userRepository.ChangePassword(oldPassword, newPassword, Encoding.UTF8.GetString(decodeVal));
+
+            if (passwordChangeSuccess.Succeeded)
+            {
+                return Ok("Password Changed");
+            }
+
+            return BadRequest("Error in changing password");
+        }
     }
 }

@@ -61,6 +61,13 @@ namespace TicketBooking_WebAPI.Repositories
 
         public async Task DeleteTicket(Guid ticketId)
         {
+            var ticketData = await dbContext.Tickets.FindAsync(ticketId);
+            var eventData = await dbContext.Events.FindAsync(ticketData.EventId);
+
+            eventData.AvailableTickets = eventData.AvailableTickets + ticketData.TicketQty;
+
+            dbContext.Events.Update(eventData);
+
             await dbContext.Tickets
                 .Where(t => t.Id == ticketId)
                 .ExecuteDeleteAsync();

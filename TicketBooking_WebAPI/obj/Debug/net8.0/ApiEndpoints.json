@@ -127,6 +127,43 @@
   },
   {
     "ContainingType": "TicketBooking_WebAPI.Controllers.UserController",
+    "Method": "changePassword",
+    "RelativePath": "api/user/changePassword",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "oldPassword",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "newPassword",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TicketBooking_WebAPI.Controllers.UserController",
+    "Method": "updateUser",
+    "RelativePath": "api/user/updateUser",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newUserData",
+        "Type": "TicketBooking_WebAPI.Models.DTO.UserData",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TicketBooking_WebAPI.Controllers.UserController",
     "Method": "UserProfile",
     "RelativePath": "api/user/UserProfile",
     "HttpMethod": "GET",

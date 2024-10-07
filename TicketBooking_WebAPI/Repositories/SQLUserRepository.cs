@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using TicketBooking_WebAPI.Database;
 using TicketBooking_WebAPI.Models.Domain;
+using TicketBooking_WebAPI.Models.DTO;
 
 namespace TicketBooking_WebAPI.Repositories
 {
@@ -20,18 +21,19 @@ namespace TicketBooking_WebAPI.Repositories
             return userData;
         }
 
-        public async Task<IdentityResult> UpdateProfile(User user, string userId)
+        public async Task<IdentityResult> UpdateProfile(UserData user, string userId)
         {
             var existingUser = await userManager.FindByIdAsync(userId);
             if (existingUser != null)
             {
-                existingUser.PhoneNumber = user.PhoneNumber;
+                existingUser.PhoneNumber = user.PhoneNumber;    
                 existingUser.UserName = user.Email;
                 existingUser.Email = user.Email;
+                existingUser.Name = user.Name;
 
                 var updateduser = await userManager.UpdateAsync(existingUser);
 
-                return updateduser;
+                return IdentityResult.Success;
             }
 
             return IdentityResult.Failed(new IdentityError { Description = "Unable to update" });
