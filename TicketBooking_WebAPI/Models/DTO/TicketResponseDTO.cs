@@ -1,4 +1,6 @@
-﻿namespace TicketBooking_WebAPI.Models.DTO
+﻿using TicketBooking_WebAPI.Models.Domain;
+
+namespace TicketBooking_WebAPI.Models.DTO
 {
     public class TicketResponseDTO
     {
@@ -9,5 +11,7 @@
 
         //Foreign keys
         public Guid EventId { get; set; }
+        //navigation property
+        public Event Event { get; set; }
     }
 }

@@ -35,7 +35,7 @@ namespace TicketBooking_WebAPI.Controllers
                 return Ok(mapper.Map<UserData>(userData));
             }
 
-            return BadRequest("User not found");
+            return BadRequest(new { message = "User not found" });
         }
 
         [HttpPut]
@@ -54,27 +54,27 @@ namespace TicketBooking_WebAPI.Controllers
 
             if (updateSuccess.Succeeded)
             {
-                return Ok("Update Succesful");
+                return Ok(new { message = "Update Successful" });
             }
 
-            return BadRequest("Can't update");
+            return BadRequest(new { message = "Cannot update" });
         }
 
         [HttpPut]
         [Route("changePassword")]
-        public async Task<IActionResult> changePassword(string oldPassword, string newPassword)
+        public async Task<IActionResult> changePassword([FromBody] ChangePasswordDTO passwordDTO)
         {
             var cookieVal = Request.Cookies["BookerId"];
             var decodeVal = Convert.FromBase64String(cookieVal);
 
-            var passwordChangeSuccess = await userRepository.ChangePassword(oldPassword, newPassword, Encoding.UTF8.GetString(decodeVal));
+            var passwordChangeSuccess = await userRepository.ChangePassword(passwordDTO.oldPassword,passwordDTO.newPassword, Encoding.UTF8.GetString(decodeVal));
 
             if (passwordChangeSuccess.Succeeded)
             {
-                return Ok("Password Changed");
+                return Ok(new { message ="Password Changed" });
             }
 
-            return BadRequest("Error in changing password");
+            return BadRequest(new { message = "Cannot update password" });
         }
     }
 }

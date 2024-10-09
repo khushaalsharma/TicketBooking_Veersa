@@ -1,0 +1,13 @@
+<dialog open class="changePswd">
+    <form (ngSubmit)="onChange()">
+        <p>
+            <input type="password" placeholder="Old Password" name="oldPswd" [(ngModel)]="passwordData.oldPassword"/>
+        </p>
+        <p>
+            <input type="password" placeholder="New Password" name="newPswd" [(ngModel)]="passwordData.newPassword"/>
+        </p>
+        <p>
+            <button type="submit" class="btn btn-danger">Change Password</button>
+        </p>
+    </form>
+</dialog>

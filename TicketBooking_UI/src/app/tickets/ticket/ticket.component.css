@@ -1,0 +1,16 @@
+.ticket-Card{
+    margin: 2% 20%;
+    padding: 2% 10% 2% 2%;
+    background-color: #efefef;
+    border-radius: 20px;
+    box-shadow: 5px 5px 3px gainsboro;
+}
+
+.cancelDialog{
+    border-width: 1px;
+    text-align: center;
+}
+
+.cancelDialog button{
+    margin: 5px;
+}

@@ -134,14 +134,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "oldPassword",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "newPassword",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "passwordDTO",
+        "Type": "TicketBooking_WebAPI.Models.DTO.ChangePasswordDTO",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

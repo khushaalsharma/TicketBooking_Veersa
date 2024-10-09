@@ -26,11 +26,20 @@ export class EventsComponent {
 
   constructor(private eventService: EventsService){} //constructor to use the service object
 
-  ngOnInit(): void { //A lifecycle hook that is called after Angular has initialized all data-bound properties of a directive. Define an ngOnInit() method to handle any additional initialization tasks.
+  getEventsFromStorage(){
+    const events = localStorage.getItem("events");
+    if(events){
+      this.eventsData = JSON.parse(events);
+    }
+  }
 
+  ngOnInit(): void { //A lifecycle hook that is called after Angular has initialized all data-bound properties of a directive. Define an ngOnInit() method to handle any additional initialization tasks.
     this.eventService.getEvent().subscribe(
       (data: EventModel[]) => {
-        this.eventsData = data; 
+        console.log(data);
+        //this.eventsData = data; 
+        localStorage.setItem("events", JSON.stringify(data));
+        this.getEventsFromStorage();
       },
       (error) => {
         console.error("Error fetching events", error);
@@ -46,5 +55,9 @@ export class EventsComponent {
     else{
       this.bookTicket = false;
     }
+  }
+
+  closeBook(){
+    this.bookTicket = false;
   }
 }

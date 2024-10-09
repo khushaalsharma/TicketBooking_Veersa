@@ -1,0 +1,19 @@
+<app-navbar/>
+
+<div class="profilePage">
+    @if (editprofile) {
+        <app-edit-profile (close)="editProfile()"/>
+    }
+    @if(changePswd){
+        <app-change-pass (close)="changePassword()"/>
+    }
+    <h5>User Profile</h5>
+    <p>{{userData.name}}</p>
+    <p>{{userData.email}}</p>
+    <p>{{userData.phoneNumber}}</p>
+    
+    <div>
+        <button class="btn btn-primary" (click)="editProfile()">Edit Profile</button>
+        <button class="btn btn-primary" (click)="changePassword()">Change Password</button>
+    </div>
+</div>

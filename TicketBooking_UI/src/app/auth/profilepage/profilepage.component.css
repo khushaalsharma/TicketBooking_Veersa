@@ -1,0 +1,10 @@
+.profilePage{
+    margin: 5% 35%;
+    padding: 5%;
+    background-color: #efefef;
+    border-radius: 20px;
+}
+
+.profilePage button{
+    margin: 0 10px 0 0;
+}

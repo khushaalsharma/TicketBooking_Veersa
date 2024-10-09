@@ -1,0 +1,17 @@
+<div class="ticket-Card">
+    <h2>{{data.event.eventName}}</h2>
+    <h6>{{data.event.eventVenue}}</h6>
+    <h6>{{data.event.dateAndTime}}</h6>
+    <p>{{data.event.eventDescription}}</p>
+    @if(cancelTicketPopUp){
+        <dialog open class="cancelDialog">
+            <p>Are you sure you want to cancel this booking?</p>
+            <button class="btn btn-danger" (click)="cancelTicket()">Yes</button> 
+            <button class="btn btn-success" (click)="cancelCancel()">No</button>
+        </dialog>
+    }
+    <h5>Qty: {{data.ticketQty}}</h5>
+    <h5>₹ {{data.amount}}</h5>
+    <p>Booked At: {{data.dateAndTime}}</p>
+    <button class="btn btn-danger" (click)="cancelCancel()">Cancel Ticket</button>
+</div>

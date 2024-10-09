@@ -1,0 +1,13 @@
+.changePswd {
+    padding: 20px;
+    border-radius: 18px;
+    border-width: 1px;
+    background-color: #B7B7B7;
+    box-shadow: 5px 5px 3px grey;
+}
+
+.changePswd input {
+    padding: 5px;
+    border-radius: 10px;
+    border-width: 1px;
+}

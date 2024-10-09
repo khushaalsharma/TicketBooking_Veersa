@@ -8,6 +8,6 @@ namespace TicketBooking_WebAPI.Repositories
         Task<bool> CheckTicketQty(Ticket ticket);
         Task<List<Ticket>> GetTicketsByUserId(string userId);
         Task<List<Ticket>> GetTicketsByEventId(Guid eventId);
-        Task DeleteTicket(Guid ticketID);
+        Task<bool> DeleteTicket(Guid ticketID, string userId);
     }
 }

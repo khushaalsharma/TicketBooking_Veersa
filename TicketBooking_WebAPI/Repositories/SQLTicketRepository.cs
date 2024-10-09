@@ -28,7 +28,8 @@ namespace TicketBooking_WebAPI.Repositories
 
         public async Task<bool> CheckTicketQty(Ticket ticket)
         {
-            var eventData = await dbContext.Events.FirstOrDefaultAsync(e => e.Id == ticket.EventId);
+            Console.WriteLine(ticket);
+            var eventData = await dbContext.Events.FirstOrDefaultAsync(t => t.Id == ticket.EventId);
             if(eventData.AvailableTickets - ticket.TicketQty >= 0)
             {
                 return true;
@@ -59,20 +60,27 @@ namespace TicketBooking_WebAPI.Repositories
             return events;
         }
 
-        public async Task DeleteTicket(Guid ticketId)
+        public async Task<bool> DeleteTicket(Guid ticketId, string userId)
         {
-            var ticketData = await dbContext.Tickets.FindAsync(ticketId);
-            var eventData = await dbContext.Events.FindAsync(ticketData.EventId);
+            var ticketData = await dbContext.Tickets.FirstOrDefaultAsync(t => t.Id == ticketId);
 
-            eventData.AvailableTickets = eventData.AvailableTickets + ticketData.TicketQty;
+            if(ticketData.UserId == userId)
+            {
+                var eventData = await dbContext.Events.FindAsync(ticketData.EventId);
 
-            dbContext.Events.Update(eventData);
+                eventData.AvailableTickets = eventData.AvailableTickets + ticketData.TicketQty;
 
-            await dbContext.Tickets
-                .Where(t => t.Id == ticketId)
-                .ExecuteDeleteAsync();
+                dbContext.Events.Update(eventData);
 
-            await dbContext.SaveChangesAsync();
+                await dbContext.Tickets
+                    .Where(t => t.Id == ticketId)
+                    .ExecuteDeleteAsync();
+
+                await dbContext.SaveChangesAsync();
+                return true;
+            }
+
+            return false;
         }
     }
 }

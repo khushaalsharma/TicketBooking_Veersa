@@ -1,0 +1,21 @@
+<dialog open class="editProfile">
+    <form (ngSubmit)="onEdit()" >
+        <p>
+            <input 
+                type="text" 
+                placeholder="Name"
+                name="name"
+                [(ngModel)]="editProfileData.name"
+            />
+        </p>
+        <p>
+            <input type="email" placeholder="Email" name="email" [(ngModel)]="editProfileData.email"/>
+        </p>
+        <p>
+            <input type="text" placeholder="Phone Number" name='phone' [(ngModel)]="editProfileData.phoneNumber"/>
+        </p>
+        <p>
+            <button type="submit" class="btn btn-success">Change</button>
+        </p>
+    </form>
+</dialog>

@@ -4,5 +4,7 @@ export interface EventModel{
     eventVenue: string;
     dateAndTime: string;
     ticketPrice: number;
+    totalTickets: number;
+    availableTickets: number;
     eventDescription: string;
 }

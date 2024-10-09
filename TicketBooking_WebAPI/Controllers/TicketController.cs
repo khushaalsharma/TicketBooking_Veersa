@@ -50,7 +50,7 @@ namespace TicketBooking_WebAPI.Controllers
                 return Ok(mapper.Map<TicketResponseDTO>(ticketData)); //Add a DTO
             }
 
-            return BadRequest("Tickets not available");
+            return BadRequest(new {message = "Tickets not available" });
         }
 
         [HttpGet]
@@ -63,6 +63,7 @@ namespace TicketBooking_WebAPI.Controllers
             var ticketsByUser = await ticketRepository.GetTicketsByUserId(Encoding.UTF8.GetString(userId));
 
             return Ok(mapper.Map<List<TicketResponseDTO>>(ticketsByUser));
+            //return Ok(ticketsByUser);
         }
 
         [HttpGet]
@@ -78,9 +79,17 @@ namespace TicketBooking_WebAPI.Controllers
         [Route("DeleteTicket/{id:Guid}")]
         public async Task<IActionResult> DeleteTicket([FromRoute] Guid id) //takes ticket ID
         {
-            await ticketRepository.DeleteTicket(id);
+            var cookieVal = Request.Cookies["BookerId"];
+            var userId = Convert.FromBase64String(cookieVal);
 
-            return Ok("Ticket Deleted");
+            var deleteOk = await ticketRepository.DeleteTicket(id, Encoding.UTF8.GetString(userId));
+
+            if (deleteOk)
+            {
+                return Ok(new { message = "Ticket Deleted" });
+            }
+
+            return BadRequest(new { message = "Only Ticket user can Delete the ticket" });
         }
     }
 }

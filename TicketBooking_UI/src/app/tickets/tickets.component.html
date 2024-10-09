@@ -1,0 +1,13 @@
+<app-navbar/>
+
+@if(ticketData.length > 0){
+    @for (ticket of ticketData; track ticket.id) {
+        <app-ticket [data]="ticket" (ticketDel)="setTickets()"/>
+    }
+}
+@else{
+    <div class="noBooking">
+        <h1>No bookings yet!</h1>
+        <a href="/home">Book now</a>
+    </div>
+}

@@ -1,0 +1,14 @@
+.authForm {
+    margin: 5% 35%;
+    padding: 5%;
+    background-color: #efefef;
+    border-radius: 20px;
+    box-shadow: 5px 5px 3px grey;
+}
+
+.authForm input {
+    width: 250px;
+    padding: 5px;
+    border-radius: 10px;
+    border-width: 1px;
+}

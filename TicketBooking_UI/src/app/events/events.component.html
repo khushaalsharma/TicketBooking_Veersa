@@ -1,5 +1,5 @@
 @if(bookTicket){
-    <app-book-ticket [eventData]="bookTicketData"/>
+    <app-book-ticket [eventData]="bookTicketData" (close)="closeBook()"/>
 }
 <div id="app-events">
     @for(eventData of eventsData; track eventData.id){

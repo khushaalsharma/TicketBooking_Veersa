@@ -1,0 +1,15 @@
+<div class="authForm">
+    <h5>Sign In</h5>
+    <form (ngSubmit)="onSubmit()">
+        <p>
+            <input required type="email" name="email" placeholder="Username" [(ngModel)]="enteredEmail"/>
+        </p>
+        <p>
+            <input required type="password" name="password" placeholder="Password" [(ngModel)]="enteredPassword"/>
+        </p>
+        <p>
+            <button type="submit" class="btn btn-primary">Sign In</button>
+        </p>
+    </form>
+    <a href="/register">Not a User? Sign Up here</a>
+</div>

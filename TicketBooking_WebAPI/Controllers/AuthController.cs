@@ -27,7 +27,9 @@ namespace TicketBooking_WebAPI.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                var Errors = ModelState.Values.SelectMany(v => v.Errors)
+                          .Select(e => e.ErrorMessage);
+                return BadRequest(new { message = "Validation failed", errors = Errors });
             }
 
             var newUserData = new User
@@ -42,7 +44,7 @@ namespace TicketBooking_WebAPI.Controllers
 
             if (createResult.Succeeded)
             {
-                return Ok("User Generated");
+                return Ok(new { message = "User Created" });
             }
 
             var errors = string.Join(", ", createResult.Errors.Select(e => e.Description));
@@ -76,7 +78,7 @@ namespace TicketBooking_WebAPI.Controllers
                     {
                         HttpOnly = true,
                         Secure = true,
-                        SameSite = SameSiteMode.Unspecified,
+                        SameSite = SameSiteMode.None,
                         Expires = DateTimeOffset.UtcNow.AddDays(1)
                     };
                     var encodedId = Encoding.UTF8.GetBytes(existingUser.Id);
