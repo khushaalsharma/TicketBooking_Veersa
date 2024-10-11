@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { EditProfileModel } from './edit-profile.model';
@@ -7,7 +6,7 @@ import { EditProfileModel } from './edit-profile.model';
 @Component({
   selector: 'app-edit-profile',
   standalone: true,
-  imports: [HttpClientModule, FormsModule],
+  imports: [ FormsModule],
   providers: [AuthService],
   templateUrl: './edit-profile.component.html',
   styleUrl: './edit-profile.component.css'

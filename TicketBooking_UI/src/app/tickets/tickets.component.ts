@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { TicketComponent } from "./ticket/ticket.component";
-import { HttpClientModule } from '@angular/common/http';
 import { TicketService } from './tickets.service';
 import { TicketModel } from './ticket/ticket.model';
 
 @Component({
   selector: 'app-tickets',
   standalone: true,
-  imports: [HttpClientModule, NavbarComponent, TicketComponent],
+  imports: [ NavbarComponent, TicketComponent],
   providers: [TicketService],
   templateUrl: './tickets.component.html',
   styleUrl: './tickets.component.css'

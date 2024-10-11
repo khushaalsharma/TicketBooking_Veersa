@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../auth.service';
 import { RegisterModel } from './register.model';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [HttpClientModule, FormsModule],
+  imports: [ FormsModule],
   providers:[AuthService],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
@@ -41,7 +40,7 @@ export class RegisterComponent {
       const regData : RegisterModel = {
         name: this.enteredName,
         email: this.enteredEmail,
-        phoneNumber: this.enteredEmail,
+        phoneNumber: this.enteredPhone,
         password: this.enteredPassword  
       };
 

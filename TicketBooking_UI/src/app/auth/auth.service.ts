@@ -10,6 +10,7 @@ import { RegisterModel } from "./register/register.model";
 import { ProfilePageModel } from "./profilepage/profielpage.model";
 import { EditProfileModel } from "./edit-profile/edit-profile.model";
 import { ChangePasswordModel } from "./change-pass/change-pass.model";
+import { AuthHelperService } from "./authHelper.service";
 
 @Injectable({
     providedIn: 'root'
@@ -22,9 +23,13 @@ export class AuthService{
     private editProfileApi = "https://localhost:7254/api/user/updateUser";
     private changePswdApi = "https://localhost:7254/api/user/changePassword";
 
-    private sessionToken = localStorage.getItem('Token');
+    constructor(private http: HttpClient, private authHelp : AuthHelperService){}
 
-    constructor(private http: HttpClient){}
+    //get the session token
+    private getToken() : string | null{
+        const token = localStorage.getItem("Token");
+        return token;
+    }
 
     //login method
     login(loginData : LoginRequestModel): Observable<LoginRespModel>{
@@ -52,7 +57,7 @@ export class AuthService{
     //get user data
     getUser() : Observable<ProfilePageModel>{
         const headers = new HttpHeaders({
-            'Authorization': `Bearer ${this.sessionToken}`
+            'Authorization': `Bearer ${this.getToken()}`
         })
         return this.http.get<ProfilePageModel>(this.profileApi, {
             headers,
@@ -69,7 +74,7 @@ export class AuthService{
     editProfile(profileData: EditProfileModel): Observable<any>{
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${this.sessionToken}`
+            'Authorization': `Bearer ${this.getToken()}`
         });
 
         return this.http.put(this.editProfileApi, profileData, {
@@ -81,7 +86,7 @@ export class AuthService{
     //change password
     changePass(password: ChangePasswordModel) : Observable<any>{
         const headers = new HttpHeaders({
-            'Authorization': `Bearer ${this.sessionToken}`,
+            'Authorization': `Bearer ${this.getToken()}`,
             'Content-Type': 'application/json'
         });
 
@@ -91,11 +96,17 @@ export class AuthService{
         });
     }
 
-    isLoggedIn(){
-        if(this.sessionToken !== null){
-            return true;
-        }
+    //checking if the user
+    isLoggedIn() : boolean {
+        return this.authHelp.isLoggedIn();
+    }
 
-        return false;
+    logout(){
+        localStorage.removeItem("Token");
+        localStorage.removeItem("events");
+        localStorage.removeItem("tickets");
+        localStorage.removeItem("userProfileData");
+
+        window.location.href = "/login";
     }
 }

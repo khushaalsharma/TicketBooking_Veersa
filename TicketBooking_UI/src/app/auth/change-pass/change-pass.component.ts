@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../auth.service';
 import { ChangePasswordModel } from './change-pass.model';
+
 @Component({
   selector: 'app-change-pass',
   standalone: true,
-  imports: [HttpClientModule, FormsModule],
+  imports: [ FormsModule],
   providers: [AuthService],
   templateUrl: './change-pass.component.html',
   styleUrl: './change-pass.component.css'

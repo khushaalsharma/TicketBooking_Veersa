@@ -1,15 +1,15 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { TicketModel } from './ticket.model';
 import { EventsService } from '../events.service';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Booking } from '../event/booking.model';
+import { AuthHelperService } from '../../auth/authHelper.service';
 
 
 @Component({
   selector: 'app-book-ticket',
   standalone: true,
-  imports: [HttpClientModule, FormsModule],
+  imports: [ FormsModule],
   providers: [EventsService],
   templateUrl: './book-ticket.component.html',
   styleUrl: './book-ticket.component.css'
@@ -20,6 +20,7 @@ export class BookTicketComponent {
   enteredQty = 1;
 
   private eventService = inject(EventsService);
+  private autHelp = inject(AuthHelperService);
 
   formatDateTime() {
     const now = new Date();
@@ -40,23 +41,29 @@ export class BookTicketComponent {
   }
 
   onSubmit(){
-    const ticketData : TicketModel = {
-      ticketQty: this.enteredQty,
-      amount: this.enteredQty * this.eventData.ticketPrice,
-      dateAndTime: this.formatDateTime(),
-      eventId: this.eventData.id,
-    };
+    if(this.autHelp.isLoggedIn() === false){
+      alert("Please Sign In to book ticket");
+      window.location.href = "/login";
+    }
+    else{
+      const ticketData : TicketModel = {
+        ticketQty: this.enteredQty,
+        amount: this.enteredQty * this.eventData.ticketPrice,
+        dateAndTime: this.formatDateTime(),
+        eventId: this.eventData.id,
+      };
 
-    this.eventService.postData(ticketData)
-        .subscribe(response => {
-          if(response){
-            alert("Booking Successful!");
-            this.close.emit();
-          }
+      this.eventService.postData(ticketData)
+          .subscribe(response => {
+            if(response){
+              alert("Booking Successful!");
+              this.close.emit();
+            }
 
-          console.log(response);
-        });
+            console.log(response);
+          });
 
-    console.log(ticketData);
+      console.log(ticketData);
+    }
   }
 }

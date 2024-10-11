@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import type { EventModel } from './event.model';
 import { Booking } from './booking.model';
+import { AuthHelperService } from '../../auth/authHelper.service';
 
 @Component({
   selector: 'app-event',
@@ -13,13 +14,21 @@ export class EventComponent {
   @Input({required: true}) eventData !: EventModel;
   @Output() bookEvent : EventEmitter<Booking> = new EventEmitter<Booking>();
 
-  onBook(){
-    const eventDetails : Booking = {
-      id: this.eventData.id,
-      eventName: this.eventData.eventName,
-      ticketPrice: this.eventData.ticketPrice
-    };
+  constructor(private authHelp : AuthHelperService){}
 
-    this.bookEvent.emit(eventDetails);
+  onBook(){
+    if(this.authHelp.isLoggedIn() === false){
+      alert("Please sign in to book tickets");
+      window.location.href = "/login";
+    }
+    else{
+      const eventDetails : Booking = {
+        id: this.eventData.id,
+        eventName: this.eventData.eventName,
+        ticketPrice: this.eventData.ticketPrice
+      };
+
+      this.bookEvent.emit(eventDetails);
+    }
   }
 }

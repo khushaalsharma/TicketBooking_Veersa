@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from "../../navbar/navbar.component";
 import { EditProfileComponent } from "../edit-profile/edit-profile.component";
 import { ChangePassComponent } from "../change-pass/change-pass.component";
@@ -9,7 +8,7 @@ import { ProfilePageModel } from './profielpage.model';
 @Component({
   selector: 'app-profilepage',
   standalone: true,
-  imports: [HttpClientModule, NavbarComponent, EditProfileComponent, ChangePassComponent],
+  imports: [ NavbarComponent, EditProfileComponent, ChangePassComponent],
   providers: [AuthService],
   templateUrl: './profilepage.component.html',
   styleUrl: './profilepage.component.css'
@@ -38,6 +37,7 @@ export class ProfilepageComponent {
     this.authservice.getUser()
         .subscribe(response => {
           //console.log(response);
+          this.userData = response;
           localStorage.setItem("userProfileData", JSON.stringify(response));
         });
     

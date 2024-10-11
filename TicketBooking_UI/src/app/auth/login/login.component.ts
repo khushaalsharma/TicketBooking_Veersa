@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from "../../navbar/navbar.component";
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
@@ -9,7 +8,7 @@ import { LoginRequestModel } from './loginReq.model';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ HttpClientModule, FormsModule, NavbarComponent],
+  imports: [  FormsModule, NavbarComponent],
   providers: [AuthService],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'] // Fixed this line

@@ -4,17 +4,17 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ProfilepageComponent } from './auth/profilepage/profilepage.component';
 import { TicketsComponent } from './tickets/tickets.component';
-import { AuthGuard } from './auth/auth.guard';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
   {
     path: "",
-    component: LoginComponent
+    component: HomepageComponent
   },
   {
     path: "profile",
     component: ProfilepageComponent,
-    //HcanActivate: [AuthGuard]
+    canActivate: [authGuard]
   },
   {
     path: "login",
@@ -27,11 +27,11 @@ export const routes: Routes = [
   {
     path: "home",
     component: HomepageComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [authGuard]
   },
   {
     path: "bookings",
     component: TicketsComponent,
-    //canActivate: [AuthGuard]
+    canActivate: [authGuard]
   }
 ];

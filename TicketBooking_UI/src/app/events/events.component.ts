@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventComponent } from "./event/event.component";
 import { EventsService } from './events.service';
-import { HttpClientModule } from '@angular/common/http';
 import type { EventModel } from './event/event.model';
 import { Booking } from './event/booking.model';
 import { BookTicketComponent } from './book-ticket/book-ticket.component';
@@ -9,7 +8,7 @@ import { BookTicketComponent } from './book-ticket/book-ticket.component';
 @Component({
   selector: 'app-events',
   standalone: true,
-  imports: [EventComponent, HttpClientModule, BookTicketComponent],
+  imports: [EventComponent, BookTicketComponent],
   providers: [EventsService],
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.css']

@@ -6,3 +6,7 @@
 .nav-item{
     padding: 5px 10px;
 }
+
+.authBtn .btn{
+    margin: 0 5px;
+}
