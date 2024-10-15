@@ -54,13 +54,16 @@ export class BookTicketComponent {
       };
 
       this.eventService.postData(ticketData)
-          .subscribe(response => {
+          .subscribe((response) => {
             if(response){
               alert("Booking Successful!");
               this.close.emit();
             }
 
             console.log(response);
+          }, (error) => {
+            alert("You are trying to book more than available tickets");
+            this.close.emit();
           });
 
       console.log(ticketData);

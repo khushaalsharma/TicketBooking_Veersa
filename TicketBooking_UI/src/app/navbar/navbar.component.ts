@@ -21,7 +21,7 @@ export class NavbarComponent {
   }
 
   signup(){
-    window.location.href = "/login";
+    window.location.href = "/register";
   }
 
   logout(){

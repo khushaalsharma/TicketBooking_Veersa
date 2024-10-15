@@ -45,7 +45,7 @@ export class RegisterComponent {
       };
 
       this.authservice.registerUser(regData)
-          .subscribe(response => {
+          .subscribe((response) => {
             console.log(response);
             if(response){
               alert("User Created, Proceed to Log In");
@@ -54,6 +54,9 @@ export class RegisterComponent {
             else{
               alert("Error creating user");
             }
+          }, (error) => {
+            alert(error.error.message);
+            window.location.href = "/login";
           });
     }
   }

@@ -32,8 +32,12 @@ namespace TicketBooking_WebAPI.Repositories
                 existingUser.Name = user.Name;
 
                 var updateduser = await userManager.UpdateAsync(existingUser);
+                //Console.WriteLine(updateduser);
+                if (updateduser.Succeeded)
+                {
+                    return IdentityResult.Success;
+                }
 
-                return IdentityResult.Success;
             }
 
             return IdentityResult.Failed(new IdentityError { Description = "Unable to update" });

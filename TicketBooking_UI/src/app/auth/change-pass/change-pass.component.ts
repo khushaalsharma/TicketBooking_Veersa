@@ -26,8 +26,9 @@ export class ChangePassComponent {
         .subscribe(response => {
           if(response){
             console.log(response);
-            alert("Password Changed successfully");
-            this.close.emit();
+            alert("Password Changed successfully!! You will be logged out. Sign In Again");
+            this.authservice.logout();
+            window.location.href = "/login";
           }
           else{
             alert("Try again");
