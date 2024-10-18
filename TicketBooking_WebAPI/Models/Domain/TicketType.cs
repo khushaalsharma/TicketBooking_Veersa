@@ -1,4 +1,6 @@
-﻿namespace TicketBooking_WebAPI.Models.Domain
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace TicketBooking_WebAPI.Models.Domain
 {
     public class TicketType
     {
@@ -7,6 +9,7 @@
         public int Price { get; set; }
         public int TotalTickets { get; set; }
         public int AvailableTickets { get; set; }
+        [ForeignKey(nameof(Event))]
         public Guid EventId { get; set; }
 
         //navigation

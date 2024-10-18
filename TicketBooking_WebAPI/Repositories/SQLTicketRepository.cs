@@ -17,7 +17,7 @@ namespace TicketBooking_WebAPI.Repositories
         {
             var eventData = await dbContext.Events.FindAsync(ticket.EventId);
 
-            eventData.AvailableTickets = eventData.AvailableTickets - ticket.TicketQty; //updating available tickets
+            //eventData.AvailableTickets = eventData.AvailableTickets - ticket.TicketQty; //updating available tickets
             
             await dbContext.Tickets.AddAsync(ticket);
             dbContext.Events.Update(eventData);
@@ -30,10 +30,10 @@ namespace TicketBooking_WebAPI.Repositories
         {
             Console.WriteLine(ticket);
             var eventData = await dbContext.Events.FirstOrDefaultAsync(t => t.Id == ticket.EventId);
-            if(eventData.AvailableTickets - ticket.TicketQty >= 0)
-            {
-                return true;
-            }
+            //if(eventData.AvailableTickets - ticket.TicketQty >= 0)
+            //{
+            //    return true;
+            //}
 
             return false;
         }
@@ -68,7 +68,7 @@ namespace TicketBooking_WebAPI.Repositories
             {
                 var eventData = await dbContext.Events.FindAsync(ticketData.EventId);
 
-                eventData.AvailableTickets = eventData.AvailableTickets + ticketData.TicketQty;
+                //eventData.AvailableTickets = eventData.AvailableTickets + ticketData.TicketQty;
 
                 dbContext.Events.Update(eventData);
 

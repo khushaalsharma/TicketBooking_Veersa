@@ -18,7 +18,6 @@ namespace TicketBooking_WebAPI.Controllers
         {
             this.tokenRepository = tokenRepository;
             this.userManager = userManager;
-            this.userManager = userManager;
         }
 
         [HttpPost]
@@ -32,7 +31,7 @@ namespace TicketBooking_WebAPI.Controllers
                 return BadRequest(new { message = "Validation failed", errors = Errors });
             }
 
-            var checkEmail = userManager.FindByEmailAsync(registerDto.Email);
+            var checkEmail = await userManager.FindByEmailAsync(registerDto.Email);
             if(checkEmail != null)
             {
                 return BadRequest(new {message = "User exists with email. Please proceed to Login"});

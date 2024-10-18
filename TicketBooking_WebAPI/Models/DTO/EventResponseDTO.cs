@@ -1,12 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TicketBooking_WebAPI.Models.Domain;
 
-namespace TicketBooking_WebAPI.Models.Domain
+namespace TicketBooking_WebAPI.Models.DTO
 {
-    public class Event
+    public class EventResponseDTO
     {
-        public Guid Id { get; set; }
         public string EventName { get; set; }
         public string EventDescription { get; set; }
         public string EventVenue { get; set; }
@@ -14,10 +13,10 @@ namespace TicketBooking_WebAPI.Models.Domain
         public TimeOnly Time { get; set; }
         public string Category { get; set; }
         public int MinTicketPrice { get; set; }
-        [ForeignKey(nameof(User))] //UserId is not of Guid type in Identity Core
         public string UserId { get; set; }
-        
-        //navigation property
-        public User User { get; set; }
+        public UserData User { get; set; }
+        [Required]
+        public List<TicketTypeRespDTO> TicketTypes { get; set; }
+        public List<ImageUrlDTO> bannerImg { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace TicketBooking_WebAPI.Models.Domain
 {
-    public class Image
+    public class EventImage
     {
         public Guid Id { get; set; }
         [NotMapped]
@@ -11,5 +11,6 @@ namespace TicketBooking_WebAPI.Models.Domain
         public string FileExtension { get; set; }
         public long SizeInBytes { get; set; } //in bytes
         public string Url { get; set; }
+        public Guid EventId { get; set; }
     }
 }
