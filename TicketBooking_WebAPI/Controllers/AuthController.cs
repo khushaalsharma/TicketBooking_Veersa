@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Text;
+using TicketBooking_WebAPI.Database;
 using TicketBooking_WebAPI.Models.Domain;
 using TicketBooking_WebAPI.Models.DTO;
 using TicketBooking_WebAPI.Repositories;
@@ -13,16 +14,22 @@ namespace TicketBooking_WebAPI.Controllers
     {
         private readonly ITokenRepository tokenRepository;
         private readonly UserManager<User> userManager;
+        private readonly IEventImageRepository eventImageRepository;
 
-        public AuthController(ITokenRepository tokenRepository, UserManager<User> userManager)
+        //constructor
+        public AuthController(ITokenRepository tokenRepository, UserManager<User> userManager, IEventImageRepository eventImageRepository, BookerDbContext dbContext)
         {
             this.tokenRepository = tokenRepository;
             this.userManager = userManager;
+            this.eventImageRepository = eventImageRepository;
         }
 
+        //User Register API
         [HttpPost]
         [Route("Register")]
-        public async Task<IActionResult> register([FromBody] RegisterDTO registerDto)
+        [RequestSizeLimit(2_000_000)]
+        [RequestFormLimits(MultipartBodyLengthLimit = 2_000_000)] //limit size to 2MB
+        public async Task<IActionResult> Register([FromForm] RegisterDTO registerDto)
         {
             if (!ModelState.IsValid)
             {
@@ -43,12 +50,31 @@ namespace TicketBooking_WebAPI.Controllers
                 Email = registerDto.Email,
                 UserName = registerDto.Email,
                 PhoneNumber = registerDto.PhoneNumber,
+                PreferredCurr = string.IsNullOrEmpty(registerDto.PreferredCurr) ? "INR" : registerDto.PreferredCurr,
+                PreferredLang = string.IsNullOrEmpty(registerDto.PreferredLang) ? "Hindi" : registerDto.PreferredLang
             };
 
             var createResult = await userManager.CreateAsync(newUserData, registerDto.Password);
 
             if (createResult.Succeeded)
             {
+                if (registerDto.ProfileImage != null)
+                {
+                    var userData = await userManager.FindByEmailAsync(registerDto.Email);
+                    var imageData = new UserImage
+                    {
+                        Name = Path.GetFileNameWithoutExtension(registerDto.ProfileImage.FileName),
+                        File = registerDto.ProfileImage,
+                        FileExtension = Path.GetExtension(registerDto.ProfileImage.FileName),
+                        Length = registerDto.ProfileImage.Length,
+                    };
+
+                    var imgData = await eventImageRepository.AddProfileImage(imageData, userData.Id);
+
+                    userData.UserImageId = imgData.Id;
+                    await userManager.UpdateAsync(userData);
+                }
+
                 return Ok(new { message = "User Created" });
             }
 
@@ -56,9 +82,11 @@ namespace TicketBooking_WebAPI.Controllers
             return BadRequest(new { error = "Error creating user", details = errors });
         }
 
+
+        //User Login API
         [HttpPost]
         [Route("Login")]
-        public async Task<IActionResult> login([FromBody] LoginRequestDTO loginDto)
+        public async Task<IActionResult> Login([FromBody] LoginRequestDTO loginDto)
         {
             if (!ModelState.IsValid)
             {
@@ -92,6 +120,7 @@ namespace TicketBooking_WebAPI.Controllers
 
                     var resp = new LoginRespDTO
                     {
+                        userId = existingUser.Id,
                         JWTtoken = token,
                     };
 

@@ -6,5 +6,7 @@ namespace TicketBooking_WebAPI.Repositories
     {
         Task<EventImage> AddEventImage(EventImage image);
         Task<List<EventImage>> GetAllEventImages(Guid eventId);
+        Task<UserImage> AddProfileImage(UserImage image, string userId);
+        Task<bool> DeleteProfileImage(Guid imageId, string userId);
     }
 }

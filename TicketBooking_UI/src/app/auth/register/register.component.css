@@ -1,5 +1,13 @@
+.outerForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
 .authForm {
-    margin: 5% 35%;
+    margin: 5% 0;
+    width: 450px;    
     padding: 5%;
     background-color: #efefef;
     border-radius: 20px;
@@ -7,8 +15,14 @@
 }
 
 .authForm input {
-    width: 250px;
+    width: 100%;
     padding: 5px;
     border-radius: 10px;
     border-width: 1px;
+}
+
+.authForm select{
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
 }

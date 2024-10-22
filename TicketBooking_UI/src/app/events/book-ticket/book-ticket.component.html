@@ -1,14 +1,14 @@
 <div class="dialogBookTicket">
     <dialog open>
         <h6>Book Tickets</h6>
-        <p>{{eventData.eventName}}</p>
+        <p></p>
         <form class="bookingForm" (ngSubmit)="onSubmit()">
             <p>
                 <label for="ticketQty">No. of Tickets</label>
                 <input required type="number" id="name" name="name" [(ngModel)]="enteredQty"/>
             </p>
             <p>
-                Price: ₹ {{eventData.ticketPrice * enteredQty}}
+                Price: ₹ 
             </p>
             <p>
                 <button class="btn btn-danger" type="submit">Book Now</button>

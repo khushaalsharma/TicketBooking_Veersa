@@ -146,6 +146,7 @@ namespace TicketBooking_WebAPI.Controllers
                 EventName = eventDetail.EventName,
                 EventVenue = eventDetail.EventVenue,
                 EventDescription = eventDetail.EventDescription,
+                Category = eventDetail.Category,
                 Time = eventDetail.Time,
                 Date = eventDetail.Date,
                 UserId = eventDetail.UserId,

@@ -105,8 +105,12 @@ app.UseAuthorization();
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Images/Events")),
-    RequestPath = "/Images/Events", //this means for URL like https://localhost:1223/Images, it will point to the Images folder's physical location on server
-
+    RequestPath = "/Images/Events",
+});
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Images/Profile")),
+    RequestPath = "/Images/Profile", 
 });
 
 app.MapControllers();

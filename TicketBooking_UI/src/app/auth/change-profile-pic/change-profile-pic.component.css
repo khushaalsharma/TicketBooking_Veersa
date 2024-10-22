@@ -1,0 +1,26 @@
+.ProfilePicDialog{
+    width: 50%;
+    height: 80%;
+    border-radius: 20px;
+    border-width: 1px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.outerForImage{
+    width: 60%;
+    height: 80%;
+    margin: 0 0 10%;
+}
+
+.outerForImage img{
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+
+form .btn{
+    margin-right: 10px;
+}

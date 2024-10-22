@@ -2,9 +2,10 @@ export interface EventModel{
     id: string;
     eventName: string;
     eventVenue: string;
-    dateAndTime: string;
-    ticketPrice: number;
-    totalTickets: number;
-    availableTickets: number;
+    date: string,
+    time: string,
+    minTicketPrice: number;
     eventDescription: string;
+    category: string;
+    bannerImg: {url : string}[];
 }

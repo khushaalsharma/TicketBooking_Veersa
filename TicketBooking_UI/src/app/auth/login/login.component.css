@@ -1,13 +1,21 @@
-.authForm{
-    margin: 10% 35%;
+.outerForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.authForm {
+    margin: 5% 0;
+    width: 450px;
     padding: 5%;
     background-color: #efefef;
     border-radius: 20px;
     box-shadow: 5px 5px 3px grey;
 }
 
-.authForm input{
-    width: 250px;
+.authForm input {
+    width: 100%;
     padding: 5px;
     border-radius: 10px;
     border-width: 1px;

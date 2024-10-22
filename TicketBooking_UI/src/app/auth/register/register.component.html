@@ -1,24 +1,44 @@
-<div class="authForm">
-    <h5>Sign In</h5>
-    <form (ngSubmit)="onRegister()">
-        <p>
-            <input type="text" placeholder="Name" name="name" [(ngModel)]="enteredName"/>
-        </p>
-        <p>
-            <input type="email" placeholder="Email" name="email" [(ngModel)]="enteredEmail"/>
-        </p>
-        <p>
-            <input type="text" placeholder="Phone" name="phone" [(ngModel)]="enteredPhone"/>
-        </p>
-        <p>
-            <input type="password" placeholder="Password" name="password" [(ngModel)]="enteredPassword"/>
-        </p>
-        <p>
-            <input type="password" placeholder="Confirm Password" name="confimPswd" [(ngModel)]="confimPassword"/>
-        </p>
-        <p>
-            <button type="submit" class="btn btn-primary">Sign Up</button>
-        </p>
-    </form>
-    <a href="/login">Already a User? Sign In here</a>
+<div class="outerForm">
+    <div class="authForm">
+        <h5>Sign Up</h5>
+        <form (ngSubmit)="onRegister()">
+            <p>
+                <input required type="text" placeholder="Name" name="name" [(ngModel)]="enteredName" />
+            </p>
+            <p>
+                <input required type="email" placeholder="Email" name="email" [(ngModel)]="enteredEmail" />
+            </p>
+            <p>
+                <input type="text" placeholder="Phone (Optional)" name="phone" [(ngModel)]="enteredPhone" />
+            </p>
+            <p>
+                <input required type="password" placeholder="Password" name="password" [(ngModel)]="enteredPassword" />
+            </p>
+            <p>
+                <input required type="password" placeholder="Confirm Password" name="confimPswd" [(ngModel)]="confimPassword" />
+            </p>
+            <p>
+                <label for="profile">Profile Photo:</label>
+                <input type="file" name="profile" (change)="onFileSelected($event)"/>
+            </p>
+            <p>
+                <label for="preferredLang">Your Preferred Language:</label>
+                <select name="preferredLang" [(ngModel)]="preferredLang">
+                    <option value="Hindi">Hindi</option>
+                    <option value="English">English</option>
+                </select>
+            </p>
+            <p>
+                <label for="preferredCurr">Your Preferred Currency:</label>
+                <select name="preferredCurr" [(ngModel)]="preferredCurr">
+                    <option value="INR">INR ₹</option>
+                    <option value="USD">USD $</option>
+                </select>
+            </p>
+            <p>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </p>
+        </form>
+        <a href="/login">Already a User? Sign In here</a>
+    </div>
 </div>

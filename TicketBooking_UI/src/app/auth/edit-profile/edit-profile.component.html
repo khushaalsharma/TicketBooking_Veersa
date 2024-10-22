@@ -9,10 +9,21 @@
             />
         </p>
         <p>
-            <input type="email" placeholder="Email" name="email" [(ngModel)]="editProfileData.email"/>
+            <input type="text" placeholder="Phone Number" name='phone' [(ngModel)]="editProfileData.phoneNumber"/>
         </p>
         <p>
-            <input type="text" placeholder="Phone Number" name='phone' [(ngModel)]="editProfileData.phoneNumber"/>
+            <label for="preferredLang">Your Preferred Language:</label>
+            <select name="preferredLang" [(ngModel)]="editProfileData.preferredLang">
+                <option value="Hindi">Hindi</option>
+                <option value="English">English</option>
+            </select>
+        </p>
+        <p>
+            <label for="preferredCurr">Your Preferred Currency:</label>
+            <select name="preferredCurr" [(ngModel)]="editProfileData.preferredCurr">
+                <option value="INR">INR ₹</option>
+                <option value="USD">USD $</option>
+            </select>
         </p>
         <p>
             <button type="submit" class="btn btn-success">Change</button>

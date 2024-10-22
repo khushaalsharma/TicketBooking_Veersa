@@ -1,0 +1,12 @@
+<dialog open class="ProfilePicDialog">
+    <div class="outerForImage">
+        <img src="{{ogUrl}}">
+    </div>
+    <div>
+        <form >
+            <input type="file" name="newPhoto" (change)="onFileSelected($event)">
+            <button class="btn btn-success" (click)="onChange()">Change Photo</button>
+            <button class="btn btn-danger" (click)="this.close.emit()">Cancel</button>
+        </form>
+    </div>
+</dialog>

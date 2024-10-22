@@ -1,5 +1,6 @@
 export interface EditProfileModel{
     name: string;
-    email: string;
     phoneNumber: string;
+    preferredCurr: string;
+    preferredLang: string;
 }

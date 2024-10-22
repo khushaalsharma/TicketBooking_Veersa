@@ -15,6 +15,7 @@ namespace TicketBooking_WebAPI.Database
         public DbSet<TicketType> TicketTypes { get; set; }
         public DbSet<EventImage> EventImages { get; set; }
         public DbSet<Payments> Payments { get; set; }
+        public DbSet<UserImage> UserImages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -48,8 +49,7 @@ namespace TicketBooking_WebAPI.Database
                    .HasForeignKey(tt => tt.EventId)
                    .OnDelete(DeleteBehavior.Cascade);  // Optional: Cascade deletion of related event in TicketType
 
-            // EventImage to Event relationship
-            builder.Entity<EventImage>();  // Optional: Cascade deletion of related event in EventImage
+            builder.Entity<EventImage>();  
 
             // Payments to User relationship
             builder.Entity<Payments>()
@@ -57,6 +57,19 @@ namespace TicketBooking_WebAPI.Database
                    .WithMany()
                    .HasForeignKey(p => p.UserId)
                    .OnDelete(DeleteBehavior.Restrict);  // Restrict deletion of related user
+
+            builder.Entity<User>(entity =>
+            {
+                entity.Property(e => e.UserImageId)
+                      .IsRequired(false);  // Make UserImageId nullable
+            });
+
+            builder.Entity<UserImage>();
+
+            //builder.Entity<UserImage>()
+            //    .HasOne<User>()                         // UserImage doesn't directly point to User
+            //    .WithOne(u => u.UserImage)
+            //    .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

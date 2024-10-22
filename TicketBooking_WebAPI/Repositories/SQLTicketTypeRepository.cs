@@ -8,11 +8,13 @@ namespace TicketBooking_WebAPI.Repositories
     {
         private readonly BookerDbContext dbContext;
 
+        //constructor
         public SQLTicketTypeRepository(BookerDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
 
+        //adding a tikcet type to database
         public async Task<TicketType> addTicketType(TicketType ticketType)
         {
             await dbContext.TicketTypes.AddAsync(ticketType);
@@ -21,6 +23,7 @@ namespace TicketBooking_WebAPI.Repositories
             return ticketType;
         }
 
+        //fetch ticket types for the event
         public Task<List<TicketType>> GetTicketTypesForEvents(Guid eventId)
         {
             var ticketTypes = dbContext.TicketTypes

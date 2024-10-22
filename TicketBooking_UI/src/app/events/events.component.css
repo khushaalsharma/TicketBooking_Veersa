@@ -1,10 +1,35 @@
+#BookerEvents{
+    padding: 5px 20px;
+    margin: 2% 10%;
+}
+
+.filters{
+    padding: 10px;
+    margin: 12px;
+}
+
+.filters input{
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    border-width: 1px;
+}
+
+.sort-section{
+    padding:10px 10px 10px 0;
+}
+.sort-section select{
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
 #app-events {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    gap: 10px;
+    padding: 10px;
+    margin: 20px;
     background-color: #f5f5f5;
-    margin: 0 10%;
 }
 
 

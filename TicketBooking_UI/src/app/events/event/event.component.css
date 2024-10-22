@@ -1,35 +1,123 @@
-.event {
-    background-color: #fff;
+/* Event card container */
+.event-card {
+    width: 100%;
+    /* Allow the card to scale with the screen size */
+    max-width: 300px;
+    /* Max width for cards to maintain consistency */
+    min-width: 260px;
+    /* Minimum width to ensure content readability */
+    height: 100%;
+    /* Automatically adjust height */
+    border: 1px solid #ccc;
     border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    font-family: 'Arial', sans-serif;
-    width: 300px;
-    height: 350px;
+    margin: 10px;
+    box-sizing: border-box;
 }
 
-.event h3 {
-    font-size: 24px;
+/* Responsive container for event cards */
+.event-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    /* Ensures alignment is centered */
+    gap: 15px;
+}
+
+/* Event carousel container */
+.carousel-item {
+    width: 100%;
+    height: 150px;
+    /* Fixed height for the carousel */
+    overflow: hidden;
+    /* Ensure image stays within the bounds */
+    border-radius: 5px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+/* Carousel images */
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    /* Cover ensures the image maintains its aspect ratio */
+    border-radius: 5px;
+    transition: transform 0.5s ease;
+}
+
+.carousel-item img:hover {
+    transform: scale(1.05);
+    /* Zoom effect on hover */
+}
+
+/* Event name */
+.event-name {
+    font-size: 1.1rem;
     font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Event description */
+.event-description {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    text-align: left;
+}
+
+/* Event details container */
+.event-details {
+    font-size: 0.85rem;
     color: #333;
     margin-bottom: 10px;
 }
 
-.event h6 {
-    font-size: 16px;
-    color: #777;
-    margin-bottom: 5px;
-}
-
-.event p {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 15px;
-}
-
-.event h5 {
-    font-size: 18px;
+/* Event price */
+.event-price {
+    font-size: 1rem;
     font-weight: bold;
-    color: #e91e63;
+    color: #e74c3c;
     margin-bottom: 10px;
+    text-align: left;
+}
+
+/* Button styling */
+.book-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    /* Full width button */
+    margin-top: auto;
+}
+
+.book-button:hover {
+    background-color: #0056b3;
+}
+
+.bookingBtn .btn{
+    width: 100%;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .event-card {
+        max-width: 100%;
+        min-width: 90%;
+    }
+
+    .event-cards-container {
+        justify-content: center;
+    }
 }

@@ -1,19 +1,36 @@
 <app-navbar/>
 
-<div class="profilePage">
+<div class="outerProfile">
     @if (editprofile) {
-        <app-edit-profile (close)="editProfile()"/>
+        <app-edit-profile (close)="editProfile()" />
     }
-    @if(changePswd){
-        <app-change-pass (close)="changePassword()"/>
+    @if(changePhoto){
+        <app-change-profile-pic (close)="changeProfilePhoto()"/>
     }
-    <h5>User Profile</h5>
-    <p>{{userData.name}}</p>
-    <p>{{userData.email}}</p>
-    <p>{{userData.phoneNumber}}</p>
-    
-    <div>
-        <button class="btn btn-primary" (click)="editProfile()">Edit Profile</button>
-        <button class="btn btn-primary" (click)="changePassword()">Change Password</button>
+    <div class="profilePage">
+        @if(changePswd){
+            <app-change-pass (close)="changePassword()" />
+        }
+        <div class="row profileHeader">
+            <div class="col-4">
+                <h4>User Profile</h4>
+            </div>
+            <div class="col-8">
+                <button class="btn btn-primary" (click)="editProfile()">Edit Profile</button>
+                <button class="btn btn-primary" (click)="changePassword()">Change Password</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5 profileImage">
+                <img src={{userData.url}} alt={{userData.name}} (click)="changeProfilePhoto()">
+            </div>
+            <div class="col-sm-7">
+                <p>{{userData.name}}</p>
+                <p>{{userData.email}}</p>
+                <p>{{userData.phoneNumber || "Phone Number not added"}}</p>
+                <p>Preferred Language: {{userData.preferredLang}}</p>
+                <p>Preferred Currency: {{userData.preferredCurr}}</p>
+            </div>
+        </div>
     </div>
 </div>

@@ -20,7 +20,8 @@ namespace TicketBooking_WebAPI.Repositories
         {
             //Creating claims
             var claims = new List<Claim>();
-            claims.Add(new Claim(ClaimTypes.Email, user.Email));    
+            claims.Add(new Claim(ClaimTypes.Email, user.Email));
+            claims.Add(new Claim(ClaimTypes.Locality, user.PreferredCurr));
 
             foreach(var role in roles)
             {
