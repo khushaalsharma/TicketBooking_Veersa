@@ -22,7 +22,7 @@ export class EditProfileComponent {
 
   private authservice = inject(AuthService);
 
-  ngOnInit() : void{
+  ngOnInit() : void{ //fetching user data from localstorage
     const data = localStorage.getItem("userProfileData");
     if(data){
       this.editProfileData = JSON.parse(data);

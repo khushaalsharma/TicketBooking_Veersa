@@ -6,6 +6,7 @@ import { AuthService } from '../auth.service';
 import { ProfilePageModel } from './profielpage.model';
 import { ChangeProfilePicComponent } from '../change-profile-pic/change-profile-pic.component';
 
+
 @Component({
   selector: 'app-profilepage',
   standalone: true,
@@ -60,5 +61,6 @@ export class ProfilepageComponent {
 
   changeProfilePhoto(){
     this.changePhoto = !this.changePhoto;
+    this.setUserData();
   }
 }
