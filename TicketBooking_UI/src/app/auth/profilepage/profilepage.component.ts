@@ -4,11 +4,13 @@ import { EditProfileComponent } from "../edit-profile/edit-profile.component";
 import { ChangePassComponent } from "../change-pass/change-pass.component";
 import { AuthService } from '../auth.service';
 import { ProfilePageModel } from './profielpage.model';
+import { ChangeProfilePicComponent } from '../change-profile-pic/change-profile-pic.component';
+
 
 @Component({
   selector: 'app-profilepage',
   standalone: true,
-  imports: [ NavbarComponent, EditProfileComponent, ChangePassComponent],
+  imports: [ NavbarComponent, EditProfileComponent, ChangePassComponent, ChangeProfilePicComponent],
   providers: [AuthService],
   templateUrl: './profilepage.component.html',
   styleUrl: './profilepage.component.css'
@@ -17,11 +19,15 @@ export class ProfilepageComponent {
 
   editprofile : boolean = false;
   changePswd : boolean = false;
+  changePhoto : boolean = false;
 
   userData : ProfilePageModel = {
     name: "",
     email: "",
     phoneNumber: "",
+    preferredCurr: "",
+    preferredLang: "",
+    url: ""
   }
 
   constructor(private authservice: AuthService){}
@@ -51,5 +57,10 @@ export class ProfilepageComponent {
 
   changePassword(){
     this.changePswd = !this.changePswd;
+  }
+
+  changeProfilePhoto(){
+    this.changePhoto = !this.changePhoto;
+    this.setUserData();
   }
 }

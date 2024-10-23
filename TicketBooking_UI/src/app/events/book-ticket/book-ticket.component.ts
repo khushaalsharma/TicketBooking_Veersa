@@ -2,7 +2,6 @@ import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { TicketModel } from './ticket.model';
 import { EventsService } from '../events.service';
 import { FormsModule } from '@angular/forms';
-import { Booking } from '../event/booking.model';
 import { AuthHelperService } from '../../auth/authHelper.service';
 
 
@@ -15,7 +14,7 @@ import { AuthHelperService } from '../../auth/authHelper.service';
   styleUrl: './book-ticket.component.css'
 })
 export class BookTicketComponent {
-  @Input({required: true}) eventData !: Booking;
+  //@Input({required: true}) eventData !: Booking;
   @Output() close = new EventEmitter<void>();
   enteredQty = 1;
 
@@ -48,9 +47,9 @@ export class BookTicketComponent {
     else{
       const ticketData : TicketModel = {
         ticketQty: this.enteredQty,
-        amount: this.enteredQty * this.eventData.ticketPrice,
+        amount: 200,
         dateAndTime: this.formatDateTime(),
-        eventId: this.eventData.id,
+        eventId: ""
       };
 
       this.eventService.postData(ticketData)

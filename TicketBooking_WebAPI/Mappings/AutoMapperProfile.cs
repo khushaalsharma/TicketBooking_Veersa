@@ -17,6 +17,10 @@ namespace TicketBooking_WebAPI.Mappings
             CreateMap<Ticket, NewTicketDTO>().ReverseMap();
             CreateMap<Ticket, TicketResponseDTO>().ReverseMap();
             CreateMap<User, UserData>().ReverseMap();
+            CreateMap<Event, EventResponseDTO>().ReverseMap();
+            CreateMap<TicketType, TicketTypeRespDTO>().ReverseMap();
+            CreateMap<TicketType, AddTicketTypeDTO>().ReverseMap();
+            CreateMap<EventImage, ImageUrlDTO>().ReverseMap();
         }
     }
 }

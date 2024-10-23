@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { EventComponent } from "./event/event.component";
 import { EventsService } from './events.service';
 import type { EventModel } from './event/event.model';
-import { Booking } from './event/booking.model';
 import { BookTicketComponent } from './book-ticket/book-ticket.component';
 
 @Component({
   selector: 'app-events',
   standalone: true,
-  imports: [EventComponent, BookTicketComponent],
+  imports: [FormsModule, EventComponent, BookTicketComponent],
   providers: [EventsService],
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.css']
@@ -16,12 +16,13 @@ import { BookTicketComponent } from './book-ticket/book-ticket.component';
 export class EventsComponent {
   public eventsData : EventModel[] = [];
 
-  bookTicket : boolean = false;
-  bookTicketData : Booking = {
-    id: "",
-    eventName: "",
-    ticketPrice: 0
-  };
+  eventName = "";
+  eventVenue = "";
+  eventCategory = "";
+  fromDate = "";
+  toDate = "";
+  sortBy = "price";
+  sortOrder = true;
 
   constructor(private eventService: EventsService){} //constructor to use the service object
 
@@ -35,7 +36,7 @@ export class EventsComponent {
   ngOnInit(): void { //A lifecycle hook that is called after Angular has initialized all data-bound properties of a directive. Define an ngOnInit() method to handle any additional initialization tasks.
     this.eventService.getEvent().subscribe(
       (data: EventModel[]) => {
-        console.log(data);
+        //console.log(data);
         //this.eventsData = data; 
         localStorage.setItem("events", JSON.stringify(data));
         this.getEventsFromStorage();
@@ -46,17 +47,28 @@ export class EventsComponent {
     );
   }
 
-  bookingTicket(booking: Booking){
-    if(booking){
-      this.bookTicket = true;
-      this.bookTicketData = booking;
-    }
-    else{
-      this.bookTicket = false;
-    }
-  }
+  onFilter(){
+    // console.log(
+    //   {
+    //     "1": this.eventName,
+    //     "2": this.eventVenue,
+    //     "3": this.eventCategory,
+    //     "4": this.fromDate,
+    //     "5": this.toDate,
+    //     "6": this.sortBy,
+    //     "7": this.sortOrder,
+    //   }
+    // )
 
-  closeBook(){
-    this.bookTicket = false;
+    this.eventService.getEventByFilter(this.eventName, this.eventVenue, this.eventCategory, this.fromDate, this.toDate, this.sortBy, this.sortOrder).subscribe(
+      (data: EventModel[]) => {
+        localStorage.setItem("events", JSON.stringify(data));
+        this.getEventsFromStorage();
+      }, 
+      (error: any) => {
+        console.log(error);
+        alert("Error in filtering");
+      }
+    )
   }
 }

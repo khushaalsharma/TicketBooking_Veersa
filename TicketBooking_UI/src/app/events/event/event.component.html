@@ -1,9 +1,36 @@
-<div class="event">
-    <h3>{{eventData.eventName}}</h3>
-    <h6>{{eventData.dateAndTime}}</h6>
-    <h6>{{eventData.eventVenue}}</h6>
-    <p>{{eventData.eventDescription}}</p>
-    <p>Available Tickets: {{eventData.availableTickets || "SOLD OUT"}}</p>
-    <h5>₹ {{eventData.ticketPrice}}</h5>
-    <button class="btn btn-primary" (click)="onBook()" >Book Ticket</button>
+<div class="card event-card">
+    <div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button *ngFor="let img of eventData.bannerImg; let i = index" type="button" data-bs-target="#eventCarousel"
+                [attr.data-bs-slide-to]="i" [class.active]="i === 0">
+            </button>
+        </div>
+        <div class="carousel-inner">
+            <div *ngFor="let img of eventData.bannerImg; let i = index" class="carousel-item"
+                [ngClass]="{'active': i === 0}">
+                <img [src]="img.url" class="w-100 h-100 d-inline-block" alt="Event Image {{ i + 1 }}">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="card-body">
+        <h5 class="card-title">{{ eventData.eventName }}</h5>
+        <p class="card-text"><strong>Category:</strong> {{ eventData.category }}</p>
+        <p class="card-text">{{ eventData.eventDescription }}</p>
+        <p class="card-text text-danger"><strong>Starting Price:</strong>{{ priceAccUser(eventData.minTicketPrice) }}</p>
+        <p class="card-text"><strong>Date:</strong> {{ eventData.date }} <br><strong>Time:</strong> {{ eventData.time }}
+        </p>
+        <p class="card-text"><strong>Venue:</strong> {{ eventData.eventVenue }}</p>
+    </div>
+    <div class="bookingBtn">
+        <button class="btn btn-primary" (click)="onBook()">Buy Tickets</button>
+    </div>
 </div>

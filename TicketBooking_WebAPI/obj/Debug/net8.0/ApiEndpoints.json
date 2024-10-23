@@ -1,7 +1,7 @@
 [
   {
     "ContainingType": "TicketBooking_WebAPI.Controllers.AuthController",
-    "Method": "login",
+    "Method": "Login",
     "RelativePath": "api/Auth/Login",
     "HttpMethod": "POST",
     "IsController": true,
@@ -17,16 +17,46 @@
   },
   {
     "ContainingType": "TicketBooking_WebAPI.Controllers.AuthController",
-    "Method": "register",
+    "Method": "Register",
     "RelativePath": "api/Auth/Register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "registerDto",
-        "Type": "TicketBooking_WebAPI.Models.DTO.RegisterDTO",
-        "IsRequired": true
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhoneNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PreferredLang",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PreferredCurr",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProfileImage",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -38,17 +68,59 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "venue",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "category",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "From",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "To",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "sortBy",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "isAsc",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "TicketBooking_WebAPI.Controllers.EventController",
-    "Method": "GetEventsByUser",
-    "RelativePath": "api/events/getEventByUser",
+    "Method": "GetEventById",
+    "RelativePath": "api/events/getEventById/{Id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -143,6 +215,22 @@
   },
   {
     "ContainingType": "TicketBooking_WebAPI.Controllers.UserController",
+    "Method": "UpdatePhoto",
+    "RelativePath": "api/user/UpdateProfilePhoto",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ProfilePhoto",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TicketBooking_WebAPI.Controllers.UserController",
     "Method": "updateUser",
     "RelativePath": "api/user/updateUser",
     "HttpMethod": "PUT",
@@ -151,7 +239,7 @@
     "Parameters": [
       {
         "Name": "newUserData",
-        "Type": "TicketBooking_WebAPI.Models.DTO.UserData",
+        "Type": "TicketBooking_WebAPI.Models.DTO.UpdateUserDataDTO",
         "IsRequired": true
       }
     ],
@@ -165,6 +253,32 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TicketBooking_WebAPI.Controllers.EventImageController",
+    "Method": "Upload",
+    "RelativePath": "EventImage/UploadEventBanner",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "EventId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {

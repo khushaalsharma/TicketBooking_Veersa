@@ -5,6 +5,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { ProfilepageComponent } from './auth/profilepage/profilepage.component';
 import { TicketsComponent } from './tickets/tickets.component';
 import { authGuard } from './auth.guard';
+import { SpecificEventComponent } from './events/specific-event/specific-event.component';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,11 @@ export const routes: Routes = [
   {
     path: "register",
     component: RegisterComponent
+  },
+  {
+    path: "event/:id",
+    component: SpecificEventComponent,
+    canActivate: [authGuard]
   },
   {
     path: "home",

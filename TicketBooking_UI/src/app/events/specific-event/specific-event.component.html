@@ -1,0 +1,62 @@
+<app-navbar/>
+<section class="eventPage">
+    <div class="eventDetails">
+        <div class="row">
+            <div class="col-sm-7">
+                <div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button *ngFor="let img of eventData.bannerImg; let i = index" type="button" data-bs-target="#eventCarousel"
+                            [attr.data-bs-slide-to]="i" [class.active]="i === 0">
+                        </button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div *ngFor="let img of eventData.bannerImg; let i = index" class="carousel-item"
+                            [ngClass]="{'active': i === 0}">
+                            <img [src]="img.url" class="w-100 h-100 d-inline-block" alt="Event Image {{ i + 1 }}">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <h1>{{eventData.eventName}}</h1>
+                <p>{{eventData.date}} | {{eventData.time}}</p>
+                <h5><strong>Venue: </strong><em>{{eventData.eventVenue}}</em></h5>
+                <p>{{eventData.eventDescription}}</p>
+                <h4>Starting Price: {{priceAccUser(eventData.minTicketPrice)}}</h4>
+                <p class="category">{{eventData.category}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="ticketStruct">
+        <h5>Select Your Tickets</h5>
+        <div *ngFor="let ticketType of eventData.ticketTypes; let i = index" class="ticketType">
+            <div class="row">
+                <div class="col-sm-8">
+                    <h6>{{ticketType.ticketCategory}}</h6>
+                    <p>{{priceAccUser(ticketType.price)}} | {{ticketType.availableTickets}} tickets left</p>
+                </div>
+                <div class="col-sm-4">
+                    <label for="ticketNum">Qty:</label>
+                    <input name="ticketNum" type="number">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="checkout row">
+        <div class="col-9">
+            <h2>Total: 0</h2>
+        </div>
+        <div class="col-3">
+            <button class="btn btn-outline-danger">Buy Now</button>
+            <!-- <button class="btn btn-outline-secondary">Add To Cart</button> -->
+        </div>
+    </div>
+</section>

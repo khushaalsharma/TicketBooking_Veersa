@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
-import { RegisterModel } from './register.model';
+
 
 @Component({
   selector: 'app-register',
@@ -17,6 +17,9 @@ export class RegisterComponent {
   enteredPhone = "";
   enteredPassword = "";
   confimPassword = "";
+  preferredCurr = "INR";
+  preferredLang = "Hindi";
+  profileImage !: File;
 
   constructor(private authservice: AuthService){}
 
@@ -29,6 +32,12 @@ export class RegisterComponent {
     return false;
   }
 
+  onFileSelected(event: any){
+    if(event.target.files.length > 0){
+      this.profileImage = event.target.files[0];
+    }
+  }
+
   onRegister(){
     if(!this.checkPassword()){
       alert("Password must be 8 characters long and contain an uppercase character, a lowercase character, a digit and a special character.")
@@ -37,14 +46,25 @@ export class RegisterComponent {
       alert("Password doesn't match");
     }
     else{
-      const regData : RegisterModel = {
-        name: this.enteredName,
-        email: this.enteredEmail,
-        phoneNumber: this.enteredPhone,
-        password: this.enteredPassword  
-      };
+      const formData = new FormData();
 
-      this.authservice.registerUser(regData)
+      // Append all the fields
+      formData.append('Name', this.enteredName);
+      formData.append('Email', this.enteredEmail);
+      formData.append('PhoneNumber', this.enteredPhone);
+      formData.append('Password', this.enteredPassword);
+      formData.append('PreferredCurr', this.preferredCurr);
+      formData.append('PreferredLang', this.preferredLang);
+
+      // Append the profile image (file)
+      if (this.profileImage) {
+        formData.append('ProfileImage', this.profileImage);
+      }
+
+
+      //console.log(this.profileImage);
+
+      this.authservice.registerUser(formData)
           .subscribe((response) => {
             console.log(response);
             if(response){
@@ -55,8 +75,19 @@ export class RegisterComponent {
               alert("Error creating user");
             }
           }, (error) => {
-            alert(error.error.message);
-            window.location.href = "/login";
+            console.log(error);
+            if(error.status === 400){
+              if(error.error.message === "User exists with email. Please proceed to Login"){
+                alert("User exists! Proceed to Login");
+                window.location.href = "/login";
+              }
+              else{
+                alert("Error in form data");
+              }
+            }
+            else if(error.status === 0){
+              alert("Server not available. Try again later!");
+            }
           });
     }
   }

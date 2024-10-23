@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -39,6 +40,8 @@ builder.Services.AddScoped<ITokenRepository, TokenRepository>();
 builder.Services.AddScoped<IEventsRepository, SQLEventsRepository>();
 builder.Services.AddScoped<ITicketRepository, SQLTicketRepository>();
 builder.Services.AddScoped<IUserRepository, SQLUserRepository>();
+builder.Services.AddScoped<ITicketTypeRepository, SQLTicketTypeRepository>();
+builder.Services.AddScoped<IEventImageRepository, EventImageRepository>();
 
 
 //AutoMapper
@@ -98,6 +101,17 @@ app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Images/Events")),
+    RequestPath = "/Images/Events",
+});
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "Images/Profile")),
+    RequestPath = "/Images/Profile", 
+});
 
 app.MapControllers();
 

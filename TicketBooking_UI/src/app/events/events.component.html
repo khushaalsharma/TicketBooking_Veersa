@@ -1,9 +1,41 @@
-@if(bookTicket){
-    <app-book-ticket [eventData]="bookTicketData" (close)="closeBook()"/>
-}
-<div id="app-events">
-    @for(eventData of eventsData; track eventData.id){
-        <app-event [eventData]="eventData" (bookEvent) = "bookingTicket($event)"/>
-    }
-</div>
+<div id="BookerEvents">
+    <h2>Events For You</h2>
+    <div class="filters">
+        <h4>Apply Filters</h4>
+        <form (ngSubmit)="onFilter()">
+            <div>
+                <input placeholder="By Name" name="eventName" [(ngModel)]="eventName">
+                <input placeholder="By Category" name="eventCategory" [(ngModel)]="eventCategory">
+                <input placeholder="By Venue" name="eventVenue" [(ngModel)]="eventVenue">
+                <label name="from">From</label>
+                <input type="date" for="from" name="fromDate" [(ngModel)]="fromDate">
+                <label name="to">To</label>
+                <input type="date" for="to" name="toDate" [(ngModel)]="toDate">
+            </div>
+            <div class="sort-section">
+                <label>Sort By: </label>
+                <select name="sorting" [(ngModel)]="sortBy">
+                    <option value="price">By Price</option>
+                    <option value="date">By Date</option>
+                </select>
+                <select name="sortingOrder" [(ngModel)]="sortOrder">
+                    <option value="true">Low to High</option>
+                    <option value="false">High to Low</option>
+                </select>
+            </div>
+        
+            <button class="btn btn-danger" type="submit">Search</button>
+        </form>
 
+    </div>
+    <div id="app-events">
+        @if(eventsData.length > 0){
+            @for(eventData of eventsData; track eventData.id){
+                <app-event [eventData]="eventData" />
+            }
+        }
+        @else {
+            <h6>No events found!</h6>
+        }
+    </div>
+</div>

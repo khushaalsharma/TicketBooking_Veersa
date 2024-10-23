@@ -13,20 +13,20 @@ import { EditProfileModel } from './edit-profile.model';
 })
 export class EditProfileComponent {
   @Output() close = new EventEmitter<void>();
-  oldEmail = "";
   editProfileData : EditProfileModel = {
     name: "",
-    email: "",
-    phoneNumber: ""
+    phoneNumber: "",
+    preferredLang: "",
+    preferredCurr: ""
   };
 
   private authservice = inject(AuthService);
 
-  ngOnInit() : void{
+  ngOnInit() : void{ //fetching user data from localstorage
     const data = localStorage.getItem("userProfileData");
     if(data){
       this.editProfileData = JSON.parse(data);
-      this.oldEmail = this.editProfileData.email;
+      //this.oldEmail = this.editProfileData.email;
     }
   }
 

@@ -6,11 +6,11 @@ import { catchError } from "rxjs/operators";
 //Models
 import { LoginRespModel } from "./login/loginResp.model";
 import { LoginRequestModel } from "./login/loginReq.model";
-import { RegisterModel } from "./register/register.model";
 import { ProfilePageModel } from "./profilepage/profielpage.model";
 import { EditProfileModel } from "./edit-profile/edit-profile.model";
 import { ChangePasswordModel } from "./change-pass/change-pass.model";
 import { AuthHelperService } from "./authHelper.service";
+import { PhotoModel } from "./change-profile-pic/photo.model";
 
 @Injectable({
     providedIn: 'root'
@@ -22,6 +22,7 @@ export class AuthService{
     private profileApi = "https://localhost:7254/api/user/UserProfile";
     private editProfileApi = "https://localhost:7254/api/user/updateUser";
     private changePswdApi = "https://localhost:7254/api/user/changePassword";
+    private changeProfilePhoto = "https://localhost:7254/api/user/UpdateProfilePhoto";
 
     constructor(private http: HttpClient, private authHelp : AuthHelperService){}
 
@@ -43,13 +44,12 @@ export class AuthService{
     }
 
     //register method
-    registerUser(regData: RegisterModel) : Observable<any>{
-        const headers = new HttpHeaders({
-            'Content-Type': 'application/json'
-        });
+    registerUser(regData: FormData) : Observable<any>{
+        // const headers = new HttpHeaders({
+        //     'Content-Type': 'application/json'
+        // });
 
         return this.http.post<any>(this.registerApi, regData, {
-            headers,
             withCredentials: true
         });
     }
@@ -94,6 +94,21 @@ export class AuthService{
             headers,
             withCredentials: true
         });
+    }
+
+    changePhoto(newPhoto : FormData): Observable<any>{
+        const headers = new HttpHeaders({
+            'Authorization': `Bearer ${this.getToken()}`
+        })
+        return this.http.put<PhotoModel>(this.changeProfilePhoto, newPhoto, {
+            headers,
+            withCredentials: true
+        }).pipe(
+            catchError((error: any): Observable<any> => {
+                console.log("Error updating profile picture:", error);
+                throw error;
+            })
+        )
     }
 
     //checking if the user

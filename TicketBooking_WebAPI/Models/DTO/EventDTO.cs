@@ -7,10 +7,11 @@ namespace TicketBooking_WebAPI.Models.DTO
         public Guid Id { get; set; }
         public string EventName { get; set; }
         public string EventDescription { get; set; }
-        public string DateAndTime { get; set; }
         public string EventVenue { get; set; }
-        public int TicketPrice { get; set; }
-        public int TotalTickets { get; set; }
-        public int AvailableTickets { get; set; }
+        public string Category { get; set; }
+        public DateOnly Date { get; set; }
+        public TimeOnly Time { get; set; }
+        public int MinTicketPrice { get; set; }
+        public List<ImageUrlDTO> bannerImg { get; set; }
     }
 }
