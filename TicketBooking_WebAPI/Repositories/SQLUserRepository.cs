@@ -89,5 +89,18 @@ namespace TicketBooking_WebAPI.Repositories
 
             return userData;
         }
+
+        public async Task<IdentityResult> UpdateCartId(string userId, Guid cartId)
+        {
+            var userData = await userManager.FindByIdAsync(userId);
+            if(userData != null)
+            {
+                userData.CartId = cartId;
+                await userManager.UpdateAsync(userData);
+                return IdentityResult.Success;
+            }
+
+            return IdentityResult.Failed();
+        }
     }
 }

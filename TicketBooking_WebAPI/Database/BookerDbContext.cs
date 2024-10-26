@@ -16,6 +16,9 @@ namespace TicketBooking_WebAPI.Database
         public DbSet<EventImage> EventImages { get; set; }
         public DbSet<Payments> Payments { get; set; }
         public DbSet<UserImage> UserImages { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<Coupon> Coupons { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -66,10 +69,35 @@ namespace TicketBooking_WebAPI.Database
 
             builder.Entity<UserImage>();
 
-            //builder.Entity<UserImage>()
-            //    .HasOne<User>()                         // UserImage doesn't directly point to User
-            //    .WithOne(u => u.UserImage)
-            //    .OnDelete(DeleteBehavior.Restrict);
+            //MANY-TO-one between CartItem and Event
+            builder.Entity<CartItem>()
+                   .HasOne(ci => ci.Event)
+                   .WithMany()
+                   .HasForeignKey(ci => ci.EventId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+            //many-to-one for CartItem and TicketType 
+            builder.Entity<CartItem>()
+                   .HasOne(ci => ci.TicketType)
+                   .WithMany()
+                   .HasForeignKey(ci => ci.TicketTypeId)
+                   .OnDelete(DeleteBehavior.Restrict);
+            
+            //one-to-one 
+            builder.Entity<Cart>()
+                   .HasOne(c => c.User)
+                   .WithOne(u => u.Cart)
+                   .HasForeignKey<User>(c => c.CartId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+            //many to one between cart and cart items
+            builder.Entity<Cart>()
+                   .HasMany(c => c.CartItems)
+                   .WithOne(ci => ci.Cart)
+                   .HasForeignKey(ci => ci.CartId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Coupon>();
         }
     }
 }
