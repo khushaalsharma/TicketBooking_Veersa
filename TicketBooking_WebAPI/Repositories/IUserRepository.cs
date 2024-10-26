@@ -11,5 +11,6 @@ namespace TicketBooking_WebAPI.Repositories
         Task<IdentityResult> ChangePassword(string ogPassword, string newPassword, string userId);
         Task<User> SetProfilePhotoNull(string userId);
         Task<IdentityResult> UpdatePhoto(string userId, Guid imgId);
+        Task<IdentityResult> UpdateCartId(string userId, Guid cartId);
     }
 }

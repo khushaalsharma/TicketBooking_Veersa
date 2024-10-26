@@ -42,6 +42,7 @@ builder.Services.AddScoped<ITicketRepository, SQLTicketRepository>();
 builder.Services.AddScoped<IUserRepository, SQLUserRepository>();
 builder.Services.AddScoped<ITicketTypeRepository, SQLTicketTypeRepository>();
 builder.Services.AddScoped<IEventImageRepository, EventImageRepository>();
+builder.Services.AddScoped<ICartRepository, SQLCartRepository>();
 
 
 //AutoMapper
