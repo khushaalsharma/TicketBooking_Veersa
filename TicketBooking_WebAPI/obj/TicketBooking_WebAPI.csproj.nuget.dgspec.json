@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Coding\\TicketBooking_Veersa\\TicketBooking_WebAPI\\TicketBooking_WebAPI.csproj": {}
+    "C:\\Users\\KhushaalSharma\\Desktop\\Ticket Booking\\TicketBooking_WebAPI\\TicketBooking_WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Coding\\TicketBooking_Veersa\\TicketBooking_WebAPI\\TicketBooking_WebAPI.csproj": {
+    "C:\\Users\\KhushaalSharma\\Desktop\\Ticket Booking\\TicketBooking_WebAPI\\TicketBooking_WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Coding\\TicketBooking_Veersa\\TicketBooking_WebAPI\\TicketBooking_WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\KhushaalSharma\\Desktop\\Ticket Booking\\TicketBooking_WebAPI\\TicketBooking_WebAPI.csproj",
         "projectName": "TicketBooking_WebAPI",
-        "projectPath": "C:\\Coding\\TicketBooking_Veersa\\TicketBooking_WebAPI\\TicketBooking_WebAPI.csproj",
-        "packagesPath": "C:\\Users\\Khushaal Sharma\\.nuget\\packages\\",
-        "outputPath": "C:\\Coding\\TicketBooking_Veersa\\TicketBooking_WebAPI\\obj\\",
+        "projectPath": "C:\\Users\\KhushaalSharma\\Desktop\\Ticket Booking\\TicketBooking_WebAPI\\TicketBooking_WebAPI.csproj",
+        "packagesPath": "C:\\Users\\KhushaalSharma\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\KhushaalSharma\\Desktop\\ticket booking\\TicketBooking_WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Khushaal Sharma\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\KhushaalSharma\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

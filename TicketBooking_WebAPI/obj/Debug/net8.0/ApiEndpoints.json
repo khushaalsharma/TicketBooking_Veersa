@@ -62,6 +62,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "TicketBooking_WebAPI.Controllers.CartController",
+    "Method": "updateCart",
+    "RelativePath": "api/Cart/UpdateCart",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cartItemDto",
+        "Type": "TicketBooking_WebAPI.Models.DTO.CartItemDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TicketBooking_WebAPI.Controllers.EventController",
     "Method": "GetAllEvents",
     "RelativePath": "api/events/getAllEvents",
@@ -277,6 +293,22 @@
         "Name": "EventId",
         "Type": "System.Guid",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TicketBooking_WebAPI.Controllers.CartController",
+    "Method": "GetCart",
+    "RelativePath": "GetCart/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.String",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
