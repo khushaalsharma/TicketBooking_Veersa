@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { from, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 import { EventModel } from './event/event.model';
-import { TicketModel } from './book-ticket/ticket.model';
+import { CartEntryModel } from './specific-event/cartData.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,8 @@ import { TicketModel } from './book-ticket/ticket.model';
 export class EventsService {
 
   private eventsApiUrl = "https://localhost:7254/api/events/getAllEvents"; //will set in environment variables
-  private ticketApiUrl = "https://localhost:7254/api/tickets/newTicket";
   private eventByIdUrl = "https://localhost:7254/api/events/getEventById";
+  private addToCartUrl = "https://localhost:7254/api/cart/UpdateCart";
   private sessionToken = localStorage.getItem("Token");
 
   constructor(private http: HttpClient) { } //constructor for service uses httpClient to use the API
@@ -80,15 +81,21 @@ export class EventsService {
     );
   }
 
-  postData(ticketData: TicketModel): Observable<any>{
+  updateCart(cartItem: CartEntryModel): Observable<any> {
     const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.sessionToken}`
+        "Authorization": `Bearer ${this.sessionToken}`,
+        "Content-Type": "application/json"
     });
 
-    return this.http.post(this.ticketApiUrl, ticketData, {
-      headers,
-      withCredentials: true
-    });
+    return this.http.post<any>(this.addToCartUrl, cartItem, {
+        headers,
+        withCredentials: true,
+        observe: 'response' // Ensures the full HTTP response is returned
+    }).pipe(
+        catchError((error: any) => {
+            console.error('Error in updateCart:', error);
+            return throwError(() => error); // Rethrow the error so it can be caught in the subscribe block
+        })
+    );
   }
 }

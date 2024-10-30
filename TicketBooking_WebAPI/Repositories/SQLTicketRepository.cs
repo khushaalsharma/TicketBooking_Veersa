@@ -13,27 +13,26 @@ namespace TicketBooking_WebAPI.Repositories
             this.dbContext = dbContext;
         }
 
-        public async Task<Ticket> BuyTicket(Ticket ticket)
+        public async Task BuyTicket(Ticket ticket)
         {
-            var eventData = await dbContext.Events.FindAsync(ticket.EventId);
+            var ticketTypeData = await dbContext.TicketTypes.FindAsync(ticket.TicketTypeId);
 
-            //eventData.AvailableTickets = eventData.AvailableTickets - ticket.TicketQty; //updating available tickets
+            ticketTypeData.AvailableTickets = ticketTypeData.AvailableTickets - ticket.TicketQty; //updating available tickets
             
             await dbContext.Tickets.AddAsync(ticket);
-            dbContext.Events.Update(eventData);
+            dbContext.TicketTypes.Update(ticketTypeData);
             await dbContext.SaveChangesAsync();
-
-            return ticket;
+            return;
         }
 
         public async Task<bool> CheckTicketQty(Ticket ticket)
         {
             Console.WriteLine(ticket);
-            var eventData = await dbContext.Events.FirstOrDefaultAsync(t => t.Id == ticket.EventId);
-            //if(eventData.AvailableTickets - ticket.TicketQty >= 0)
-            //{
-            //    return true;
-            //}
+            var ticketTypeData = await dbContext.TicketTypes.FirstOrDefaultAsync(t => t.Id == ticket.TicketTypeId);
+            if (ticketTypeData.AvailableTickets - ticket.TicketQty >= 0)
+            {
+                return true;
+            }
 
             return false;
         }
@@ -54,6 +53,7 @@ namespace TicketBooking_WebAPI.Repositories
         {
             var events = await dbContext.Tickets
                                     .Include("Event")
+                                    .Include("TicketType")
                                     .Where(t => t.UserId == userId)
                                     .ToListAsync();
 
@@ -66,11 +66,11 @@ namespace TicketBooking_WebAPI.Repositories
 
             if(ticketData.UserId == userId)
             {
-                var eventData = await dbContext.Events.FindAsync(ticketData.EventId);
+                var ticketTypeData = await dbContext.TicketTypes.FindAsync(ticketData.TicketTypeId);
 
-                //eventData.AvailableTickets = eventData.AvailableTickets + ticketData.TicketQty;
+                ticketTypeData.AvailableTickets = ticketTypeData.AvailableTickets + ticketData.TicketQty;
 
-                dbContext.Events.Update(eventData);
+                dbContext.TicketTypes.Update(ticketTypeData);
 
                 await dbContext.Tickets
                     .Where(t => t.Id == ticketId)

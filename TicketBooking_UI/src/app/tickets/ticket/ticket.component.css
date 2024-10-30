@@ -1,16 +1,59 @@
-.ticket-Card{
-    margin: 2% 20%;
-    padding: 2% 10% 2% 2%;
-    background-color: #efefef;
-    border-radius: 20px;
-    box-shadow: 5px 5px 3px gainsboro;
-}
-
-.cancelDialog{
-    border-width: 1px;
+.ticket-card {
+    max-width: 500px; /* Limits the width of the card */
+    width: 90%; /* Responsive width */
+    margin: 20px auto; /* Centers the card on the screen */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for a lifted look */
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    padding: 20px; /* Adds padding for content */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .ticket-card:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+  }
+  
+  .ticket-card h4 {
+    font-size: 1.4rem;
+    color: #007bff; /* Primary color */
+  }
+  
+  .ticket-card .cancel-dialog {
+    max-width: 300px;
+    margin: auto;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #dc3545;
+    padding: 15px;
     text-align: center;
-}
-
-.cancelDialog button{
-    margin: 5px;
-}
+  }
+  
+  .ticket-card hr {
+    margin: 1rem 0; /* Slightly larger spacing around hr */
+    border: none;
+    height: 1px;
+    background-color: #e0e0e0; /* Subtle color for divider */
+  }
+  
+  .ticket-card .btn {
+    margin-top: 10px;
+  }
+  
+  /* Mobile adjustments */
+  @media (max-width: 576px) {
+    .ticket-card {
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Lighter shadow for mobile */
+    }
+  
+    .ticket-card h4 {
+      font-size: 1.2rem; /* Adjust font size for smaller screens */
+    }
+  
+    .ticket-card p {
+      font-size: 0.9rem; /* Adjust paragraph font size */
+    }
+  }
+  

@@ -11,7 +11,10 @@ namespace TicketBooking_WebAPI.Models.DTO
 
         //Foreign keys
         public Guid EventId { get; set; }
+        public Guid TicketTypeId { get; set; }
+        public Guid PaymentsId { get; set; }
         //navigation property
         public Event Event { get; set; }
+        public TicketType TicketType { get; set; }
     }
 }

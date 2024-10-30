@@ -22,37 +22,6 @@ namespace TicketBooking_WebAPI.Controllers
             this.ticketRepository = ticketRepository;
         }
 
-        [HttpPost]
-        [Route("newTicket")]
-        public async Task<IActionResult> AddTicket([FromBody] NewTicketDTO ticketDto)
-        {
-            if(!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var cookieVal = Request.Cookies["BookerId"];
-            var userId = Convert.FromBase64String(cookieVal);
-
-            var ticketData = new Ticket
-            {
-                TicketQty = ticketDto.TicketQty,
-                Amount = ticketDto.Amount,
-                DateAndTime = ticketDto.DateAndTime,
-                EventId = ticketDto.EventId,
-                UserId = Encoding.UTF8.GetString(userId)
-            };
-
-            var check = await ticketRepository.CheckTicketQty(ticketData);
-            if (check)
-            {
-                ticketData = await ticketRepository.BuyTicket(ticketData);
-                return Ok(mapper.Map<TicketResponseDTO>(ticketData)); //Add a DTO
-            }
-
-            return BadRequest(new {message = "Tickets not available" });
-        }
-
         [HttpGet]
         [Route("getUserTickets")]
         public async Task<IActionResult> GetTicketByUser()

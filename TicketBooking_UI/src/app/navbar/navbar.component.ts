@@ -1,19 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { AuthHelperService } from '../auth/authHelper.service';
 import { AuthService } from '../auth/auth.service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterOutlet],
+  imports: [CommonModule, RouterLink, RouterOutlet],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
+  
+  isLoggedIn: boolean = false;
+  
   constructor(private authHelp : AuthHelperService, private authService : AuthService){}
 
-  checkLogIn(){
-    return this.authHelp.isLoggedIn();
+  ngOnInit(){
+    this.isLoggedIn = this.authHelp.isLoggedIn();
   }
 
   signin(){
@@ -26,5 +30,9 @@ export class NavbarComponent {
 
   logout(){
     this.authService.logout();
+  }
+
+  yourCart(){
+    window.location.href = "/cart";
   }
 }

@@ -6,6 +6,8 @@ import { ProfilepageComponent } from './auth/profilepage/profilepage.component';
 import { TicketsComponent } from './tickets/tickets.component';
 import { authGuard } from './auth.guard';
 import { SpecificEventComponent } from './events/specific-event/specific-event.component';
+import { CartComponent } from './cart/cart.component';
+import { PaymentsComponent } from './payments/payments.component';
 
 export const routes: Routes = [
   {
@@ -38,6 +40,16 @@ export const routes: Routes = [
   {
     path: "bookings",
     component: TicketsComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: "cart",
+    component: CartComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: "checkout",
+    component: PaymentsComponent,
     canActivate: [authGuard]
   }
 ];

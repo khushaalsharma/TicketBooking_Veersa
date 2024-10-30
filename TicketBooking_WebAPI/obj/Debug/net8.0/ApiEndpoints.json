@@ -62,6 +62,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "TicketBooking_WebAPI.Controllers.CartController",
+    "Method": "AddToCart",
+    "RelativePath": "api/cart/UpdateCart",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cartItemDto",
+        "Type": "TicketBooking_WebAPI.Models.DTO.CartItemDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TicketBooking_WebAPI.Controllers.EventController",
     "Method": "GetAllEvents",
     "RelativePath": "api/events/getAllEvents",
@@ -140,6 +156,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "TicketBooking_WebAPI.Controllers.PaymentController",
+    "Method": "buyTickets",
+    "RelativePath": "api/Payment/NewTickets",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ticketDto",
+        "Type": "TicketBooking_WebAPI.Models.DTO.BuyTicketDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TicketBooking_WebAPI.Controllers.TicketController",
     "Method": "DeleteTicket",
     "RelativePath": "api/tickets/DeleteTicket/{id}",
@@ -179,22 +211,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "TicketBooking_WebAPI.Controllers.TicketController",
-    "Method": "AddTicket",
-    "RelativePath": "api/tickets/newTicket",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "ticketDto",
-        "Type": "TicketBooking_WebAPI.Models.DTO.NewTicketDTO",
-        "IsRequired": true
-      }
-    ],
     "ReturnTypes": []
   },
   {
@@ -279,6 +295,16 @@
         "IsRequired": false
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TicketBooking_WebAPI.Controllers.CartController",
+    "Method": "GetCart",
+    "RelativePath": "GetCart",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

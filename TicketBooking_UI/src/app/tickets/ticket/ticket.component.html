@@ -1,17 +1,50 @@
-<div class="ticket-Card">
-    <h2>{{data.event.eventName}}</h2>
-    <h6>{{data.event.eventVenue}}</h6>
-    <h6>{{data.event.dateAndTime}}</h6>
-    <p>{{data.event.eventDescription}}</p>
-    @if(cancelTicketPopUp){
-        <dialog open class="cancelDialog">
-            <p>Are you sure you want to cancel this booking?</p>
-            <button class="btn btn-danger" (click)="cancelTicket()">Yes</button> 
-            <button class="btn btn-success" (click)="cancelCancel()">No</button>
-        </dialog>
-    }
-    <h5>Qty: {{data.ticketQty}}</h5>
-    <h5>₹ {{data.amount}}</h5>
-    <p>Booked At: {{data.dateAndTime}}</p>
-    <button class="btn btn-danger" (click)="cancelCancel()">Cancel Ticket</button>
-</div>
+<div class="ticket-card card shadow-sm p-4 mb-4 border-primary">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-start">
+        <div>
+          <!-- Event Name -->
+          <h4 class="text-primary">{{ data.event.eventName }}</h4>
+          <!-- Event Venue -->
+          <p class="text-muted">{{ data.event.eventVenue }}</p>
+        </div>
+        <!-- Event Date & Time -->
+        <div class="text-end">
+          <small><strong>Event Date:</strong></small>
+          <p class="mb-0">{{ data.event.date}}</p>
+          <small><strong>Event Time:</strong></small>
+          <p class="mb-0">{{ data.event.time}}</p>
+        </div>
+      </div>
+      <dialog *ngIf="cancelTicketPopUp" open class="cancel-dialog p-3">
+        <p>Are you sure you want to cancel this booking?</p>
+        <button class="btn btn-danger me-2" (click)="cancelTicket()">Yes</button>
+        <button class="btn btn-success" (click)="cancelCancel()">No</button>
+      </dialog>
+      <!-- Event Description -->
+      <p class="mt-2">{{ data.event.eventDescription }}</p>
+      
+      <hr>
+  
+      <!-- Ticket Details -->
+      <div class="row">
+        <div class="col-6">
+          <h6><strong>Quantity:</strong> {{ data.ticketQty }}</h6>
+          <h6><strong>Amount:</strong> {{ getAmount(data.amount) }}</h6>
+        </div>
+        <div class="col-6 text-end">
+          <!-- Booking Date & Time -->
+          <small><strong>Booked At:</strong></small>
+          <p class="mb-0">{{ data.dateAndTime | date: 'medium' }}</p>
+          <!-- Payment ID -->
+        </div>
+      </div>
+      <small><strong>Payment ID:</strong> {{ data.paymentsId }}</small>
+      <hr>
+  
+      <!-- Cancel Ticket Button & Confirmation Dialog -->
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-danger" (click)="cancelCancel()">Cancel Ticket</button>
+      </div>
+    </div>
+  </div>
+  

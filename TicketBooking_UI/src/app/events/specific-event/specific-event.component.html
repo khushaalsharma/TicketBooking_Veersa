@@ -35,6 +35,12 @@
             </div>
         </div>
     </div>
+    <div class="orgDetails">
+        <h5>Organizer's Contact Details</h5>
+        <p>Name: {{eventData.user.name}}</p>
+        <p>Email: {{eventData.user.email}}</p>
+        <p>Phone: {{eventData.user.phoneNumber}}</p>
+    </div>
     <div class="ticketStruct">
         <h5>Select Your Tickets</h5>
         <div *ngFor="let ticketType of eventData.ticketTypes; let i = index" class="ticketType">
@@ -45,18 +51,19 @@
                 </div>
                 <div class="col-sm-4">
                     <label for="ticketNum">Qty:</label>
-                    <input name="ticketNum" type="number">
+                    <input name="ticketNum" type="number" [(ngModel)] = "ticketQty[i].quantity" min="0" (change)="calculateAmount(i)">
+                    <p>Amount: {{priceAccUser(ticketQty[i].amount)}}</p>
                 </div>
+            </div>
+            <div class="">
+                <button class="btn btn-outline-primary" (click)="addToCart(ticketQty[i])">Add to Cart</button>
             </div>
         </div>
     </div>
     <div class="checkout row">
-        <div class="col-9">
-            <h2>Total: 0</h2>
-        </div>
+        <div class="col-9"></div>
         <div class="col-3">
-            <button class="btn btn-outline-danger">Buy Now</button>
-            <!-- <button class="btn btn-outline-secondary">Add To Cart</button> -->
+            <button class="btn btn-outline-danger" (click)="toCart()">View Cart</button>
         </div>
     </div>
 </section>

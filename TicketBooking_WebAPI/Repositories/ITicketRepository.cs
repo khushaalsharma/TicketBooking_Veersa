@@ -4,7 +4,7 @@ namespace TicketBooking_WebAPI.Repositories
 {
     public interface ITicketRepository
     {
-        Task<Ticket> BuyTicket(Ticket ticket);
+        Task BuyTicket(Ticket ticket);
         Task<bool> CheckTicketQty(Ticket ticket);
         Task<List<Ticket>> GetTicketsByUserId(string userId);
         Task<List<Ticket>> GetTicketsByEventId(Guid eventId);

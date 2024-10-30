@@ -1,0 +1,157 @@
+/* Basic Styling */
+#checkout {
+    margin: 3% 10%;
+    font-family: Arial, sans-serif;
+}
+
+h4, h5 {
+    text-align: center;
+    font-weight: bold;
+}
+
+.summaryCard, .paymentCard {
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: #fff;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+.ticketDetails {
+    margin: 3% 5%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.ticketDetails .row {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.ticketDetails .row:last-child {
+    border-bottom: none;
+}
+
+.ticketDetails h6 {
+    font-weight: bold;
+    margin: 0;
+    color: #333;
+}
+
+.ticketDetails div {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Booking and Receipt Details */
+.receipt {
+    margin: 3% 5%;
+}
+
+.receipt .row {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.total-row {
+    font-weight: bold;
+    background-color: #f1f1f1;
+}
+
+.coupon {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.coupon input {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.paymentCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Input Styling */
+.input-group {
+    margin: 10px 0;
+}
+
+.cardNum input, .cardOther input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.cardOther input {
+    margin-right: 10px;
+    width: calc(50% - 5px);
+}
+
+.buy {
+    display: flex;
+    justify-content: center;
+}
+
+.buy .btn {
+    width: 100%;
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #checkout {
+        margin: 5% 3%;
+    }
+
+    .row {
+        flex-direction: column;
+    }
+
+    .summaryCard, .paymentCard {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .coupon {
+        flex-direction: column;
+    }
+
+    .coupon input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .cardOther input {
+        width: 100%;
+        margin: 0 0 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    h4, h5 {
+        font-size: 18px;
+    }
+
+    .btn {
+        font-size: 14px;
+    }
+
+    .receipt .row div {
+        font-size: 14px;
+    }
+}

@@ -6,8 +6,6 @@ namespace TicketBooking_WebAPI.Models.DTO
     public class CartItemDTO
     {
         [Required]
-        public Guid Id { get; set; }
-        [Required]
         public int Quantity { get; set; }
         [Required]
         [Column(TypeName = "decimal(18,2)")]

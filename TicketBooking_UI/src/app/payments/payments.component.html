@@ -1,0 +1,76 @@
+<app-navbar></app-navbar>
+<section id="checkout">
+    <h4>Checkout</h4>
+    <div class="row">
+        <div class="col-md-5 summaryCard">
+            <h5>Ticket Details</h5>
+            <div class="ticketDetails">
+                <div class="row">
+                    <div class="col-6">
+                        <strong>Event Details</strong>
+                    </div>
+                    <div class="col-6">
+                        <strong>Quantity</strong>
+                    </div>
+                </div>
+                @for (ticket of checkoutData?.tickets; track $index) {
+                    <div class="row">
+                        <div class="col-6">
+                            <h6>{{ticket.eventName}}</h6>
+                            {{ticket.ticketTypeName}}
+                        </div>
+                        <div class="col-6">
+                            {{ticket.qty}}
+                        </div>
+                    </div>
+                }
+            </div>
+            <h5>Booking Details</h5>
+            <div class="receipt">
+                <div class="row">
+                    <div class="col-6">
+                        <strong>Sub-Total</strong>
+                    </div>
+                    <div class="col-6 text-end">
+                        {{getAmount(subamount)}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <strong>Booking Fee</strong>
+                    </div>
+                    <div class="col-6 text-end">
+                        {{getAmount(taxes)}}
+                    </div>
+                </div>
+                <div class="row total-row">
+                    <div class="col-6">
+                        <h5>Total Amount</h5>
+                    </div>
+                    <div class="col-6 text-end">
+                        <h5>{{getAmount(totalAmount)}}</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="coupon">
+                <input type="text" placeholder="Add Coupon" aria-label="Add Coupon">
+                <button class="btn btn-dark">Apply Code</button>
+            </div>
+        </div>
+        <div class="col-md-6 paymentCard">
+            <h5>Payment Details</h5>
+            <form (ngSubmit)="finalCheckout()">
+                <div class="input-group cardNum">
+                    <input type="text" name="cardNum" placeholder="1234-2345-3456-4567" aria-label="Card Number" [(ngModel)]="creditCardNum">
+                </div>
+                <div class="input-group cardOther">
+                    <input type="text" name="expiry" placeholder="MM/YY" aria-label="Expiry Date" [(ngModel)]="expiry">
+                    <input type="password" name="cvv" placeholder="CVV" aria-label="CVV" [(ngModel)]="cvv">
+                </div>
+                <div class="buy">
+                    <button class="btn btn-outline-danger" type="submit">Buy Now</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

@@ -25,8 +25,8 @@ namespace TicketBooking_WebAPI.Models.Domain
         public Guid CartId { get; set; }
 
         //navigation properties
-        public Event Event { get; set; } = new Event();
-        public TicketType TicketType { get; set; } = new TicketType();
+        public Event Event { get; set; }
+        public TicketType TicketType { get; set; } 
         public Cart Cart { get; set; }
 
     }

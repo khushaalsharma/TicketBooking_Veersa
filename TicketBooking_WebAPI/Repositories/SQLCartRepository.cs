@@ -20,50 +20,73 @@ namespace TicketBooking_WebAPI.Repositories
             if(userCart != null)
             {
                 userCart.CartItems.Add(cartItem); //adding item to cartitems collection
+
+                dbContext.Carts.Update(userCart);
                 await dbContext.SaveChangesAsync();
                 return;
             }
                                     
         }
 
-        public async Task DeleteItem(Guid itemId, string userId)
+        public async Task<Cart> CreateEmptyCart(string userId)
         {
-            var userCart = await dbContext.Carts.Include(c => c.CartItems).Where(c => c.UserId == userId).FirstOrDefaultAsync();
-
-            if(userCart != null)
+            var cart = new Cart
             {
-                var existingItem = userCart.CartItems.FirstOrDefault(ci => ci.Id == itemId);
-                if (existingItem != null)
-                {
-                    userCart.CartItems.Remove(existingItem); //removing from collection
-                    await dbContext.SaveChangesAsync();
-                    return;
-                }
+                UserId = userId,
+            };
+
+            await dbContext.Carts.AddAsync(cart);
+            await dbContext.SaveChangesAsync();
+
+            return cart;
+        }
+
+        public async Task EmptyCart(string userId)
+        {
+            var userCart = await dbContext.Carts.Include(c => c.CartItems).FirstOrDefaultAsync(c => c.UserId == userId);
+
+            if (userCart != null && userCart.CartItems.Any())
+            {
+                dbContext.CartItems.RemoveRange(userCart.CartItems);
+                await dbContext.SaveChangesAsync();
             }
         }
 
+
         public async Task<Cart> GetCart(string userId)
         {
-            var userCart = await dbContext.Carts.Include(c => c.CartItems).Where(c => c.UserId == userId).FirstOrDefaultAsync();
+            var userCart = await dbContext.Carts
+                .Include(c => c.CartItems)
+                    .ThenInclude(ci => ci.Event)        // Include Event data for each CartItem
+                .Include(c => c.CartItems)
+                    .ThenInclude(ci => ci.TicketType)   // Include TicketType data for each CartItem
+                .Where(c => c.UserId == userId)
+                .FirstOrDefaultAsync();
 
-            return userCart;            
+            return userCart;
         }
 
         public async Task UpdateCartItemQty(string userId, CartItem updatedCartItem)
         {
-            var userCart = await dbContext.Carts.Include(c => c.CartItems).Where(c => c.UserId == userId).FirstOrDefaultAsync();
+            var userCart = await dbContext.Carts
+                .Include(c => c.CartItems)
+                .FirstOrDefaultAsync(c => c.UserId == userId);
 
-            var existingItem = userCart.CartItems.FirstOrDefault(ci => ci.Id ==  updatedCartItem.Id);   
-            if(existingItem != null)
+            if (userCart != null)
             {
-                //updating the cart item
-                existingItem.Quantity = updatedCartItem.Quantity;
-                existingItem.Price = updatedCartItem.Price;
-                existingItem.Amount = updatedCartItem.Amount;
+                var existingItem = userCart.CartItems
+                    .FirstOrDefault(ci => ci.EventId == updatedCartItem.EventId && ci.TicketTypeId == updatedCartItem.TicketTypeId);
 
-                await dbContext.SaveChangesAsync();
-                return;
+                if (existingItem != null)
+                {
+                    // Update the cart item properties
+                    existingItem.Quantity = updatedCartItem.Quantity;
+                    existingItem.Amount = existingItem.Quantity * existingItem.Price;
+
+                    await dbContext.SaveChangesAsync();
+                }
             }
         }
+
     }
 }

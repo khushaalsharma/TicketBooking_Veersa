@@ -10,7 +10,7 @@ namespace TicketBooking_WebAPI.Models.Domain
         [Required]
         public string PaymentMethod { get; set; }
         [Required]
-        public string MethodDetail { get; set; } //takes card number or apple ID
+        public string MethodDetail { get; set; } //takes card number
         [Required]
         public DateTime BoughtAt { get; set; }
         [Required]      

@@ -3,12 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { EventComponent } from "./event/event.component";
 import { EventsService } from './events.service';
 import type { EventModel } from './event/event.model';
-import { BookTicketComponent } from './book-ticket/book-ticket.component';
+
 
 @Component({
   selector: 'app-events',
   standalone: true,
-  imports: [FormsModule, EventComponent, BookTicketComponent],
+  imports: [FormsModule, EventComponent],
   providers: [EventsService],
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.css']

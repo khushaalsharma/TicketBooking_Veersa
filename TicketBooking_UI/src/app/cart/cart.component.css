@@ -1,0 +1,29 @@
+#cart{
+    margin-top: 2%;
+    padding-bottom: 80px;
+}
+
+.cartItem{
+    margin: 10px 0;
+    border-radius: 18px;
+    border: 1px solid #000;
+    padding: 10px 20px;
+    box-shadow: 5px 5px 5px;
+}
+
+.checkoutDiv {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.checkoutDiv .row {
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+}
