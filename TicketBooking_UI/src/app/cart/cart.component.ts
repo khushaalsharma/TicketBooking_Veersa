@@ -100,4 +100,20 @@ export class CartComponent implements OnInit {
     }
   }
 
+  cancelTicket(id: string){
+    this.cartService.deleteCartItem(id)
+        .subscribe((response) => {
+          if(response.status === 400){
+            alert("Couldn't remove from cart. Try again later");
+          }
+          else{
+            this.userCart = this.userCart.filter((item) => item.id !== id);
+          }
+        },
+        (error) => {
+          console.log(error);
+          alert(error);
+        }
+      )
+  }
 }

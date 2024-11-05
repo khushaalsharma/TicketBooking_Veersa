@@ -37,15 +37,13 @@ export class EventsService {
   }
 
   //get events woth filtering and searching
-  getEventByFilter(name: string, venue: string, category: string, From: string, To: string, sortBy: string, isAsc: boolean): Observable<EventModel[]>{
+  getEventByFilter(searchVal: string, From: string, To: string, sortBy: string, isAsc: boolean): Observable<EventModel[]>{
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
 
     const queryParams = new HttpParams()
-                    .set("name", name)
-                    .set("venue", venue)
-                    .set("category", category)
+                    .set("searchVal", searchVal)
                     .set("From", From)
                     .set("To", To)
                     .set("sortBy", sortBy)

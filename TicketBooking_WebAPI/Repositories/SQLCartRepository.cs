@@ -41,6 +41,40 @@ namespace TicketBooking_WebAPI.Repositories
             return cart;
         }
 
+        public async Task<CartItem> DeleteCartItem(Guid itemId)
+        {
+            var cartItem = await dbContext.CartItems.FirstOrDefaultAsync(ci => ci.Id == itemId);
+
+            if (cartItem != null)
+            {
+                dbContext.CartItems.Remove(cartItem);
+
+                // Debugging step to confirm deletion state
+                var state = dbContext.Entry(cartItem).State;
+                //Console.WriteLine($"State before saving: {state}"); // Should be "Deleted"
+
+                try
+                {
+                    await dbContext.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+                   // Console.WriteLine($"Error saving changes: {ex.Message}");
+                    return null;
+                }
+
+                // Confirm if item was deleted by re-querying or checking state
+                state = dbContext.Entry(cartItem).State;
+                //Console.WriteLine($"State after saving: {state}"); // Should be "Detached" or "Unchanged" after deletion
+
+                return cartItem;
+            }
+
+            Console.WriteLine("Item not found.");
+            return null;
+        }
+
+
         public async Task EmptyCart(string userId)
         {
             var userCart = await dbContext.Carts.Include(c => c.CartItems).FirstOrDefaultAsync(c => c.UserId == userId);

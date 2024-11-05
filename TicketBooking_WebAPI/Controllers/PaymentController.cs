@@ -39,6 +39,9 @@ namespace TicketBooking_WebAPI.Controllers
             var decodeVal = Convert.FromBase64String(cookieVal);
             var userId = Encoding.UTF8.GetString(decodeVal);
 
+            //update the coupon count
+            await paymentRepository.UpdateCoupon(ticketDto.CouponCode);
+
             //initiate payment
             var paymentData = new Payments
             {

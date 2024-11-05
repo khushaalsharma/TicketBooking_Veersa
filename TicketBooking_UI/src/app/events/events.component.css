@@ -1,24 +1,37 @@
-#BookerEvents{
+#BookerEvents {
     padding: 5px 20px;
     margin: 2% 10%;
 }
 
-.filters{
+.filters {
     padding: 10px;
     margin: 12px;
 }
 
-.filters input{
+.filters .dateFilters {
+    margin: 10px 0px 0px;
+}
+
+.filters input {
     margin-right: 10px;
     padding: 5px;
     border-radius: 10px;
     border-width: 1px;
 }
 
-.sort-section{
-    padding:10px 10px 10px 0;
+.filters #searchVal {
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    border-width: 1px;
+    width: 60%;
 }
-.sort-section select{
+
+.sort-section {
+    padding: 10px 10px 10px 0;
+}
+
+.sort-section select {
     border-radius: 10px;
     margin-left: 10px;
 }
@@ -26,12 +39,10 @@
 #app-events {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 10px;
-    padding: 10px;
-    margin: 20px;
-    background-color: #f5f5f5;
+    gap: 5px; 
+    padding: 0; 
+    margin: 3px; /* Removed margin */
 }
-
 
 @media (max-width: 768px) {
     #app-events {
@@ -42,6 +53,5 @@
 @media (max-width: 480px) {
     #app-events {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        padding: 10px;
     }
 }

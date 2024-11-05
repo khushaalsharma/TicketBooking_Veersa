@@ -26,9 +26,9 @@
         <p class="card-text"><strong>Category:</strong> {{ eventData.category }}</p>
         <p class="card-text">{{ eventData.eventDescription }}</p>
         <p class="card-text text-danger"><strong>Starting Price:</strong>{{ priceAccUser(eventData.minTicketPrice) }}</p>
-        <p class="card-text"><strong>Date:</strong> {{ eventData.date }} <br><strong>Time:</strong> {{ eventData.time }}
+        <p class="card-text"><strong><i class="fa-solid fa-calendar"></i>:</strong> {{ eventData.date }} <br><strong><i class="fa-solid fa-clock"></i>:</strong> {{ eventData.time }}
         </p>
-        <p class="card-text"><strong>Venue:</strong> {{ eventData.eventVenue }}</p>
+        <p class="card-text"><strong><i class="fa-solid fa-location-dot"></i>:</strong> {{ eventData.eventVenue }}</p>
     </div>
     <div class="bookingBtn">
         <button class="btn btn-primary" (click)="onBook()">Buy Tickets</button>

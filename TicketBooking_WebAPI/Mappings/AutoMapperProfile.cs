@@ -23,6 +23,7 @@ namespace TicketBooking_WebAPI.Mappings
             CreateMap<EventImage, ImageUrlDTO>().ReverseMap();
             CreateMap<CartItem, CartItemRespDTO>().ReverseMap();
             CreateMap<Cart, CartDTO>().ReverseMap();
+            CreateMap<Coupon, CouponDTO>().ReverseMap();
         }
     }
 }

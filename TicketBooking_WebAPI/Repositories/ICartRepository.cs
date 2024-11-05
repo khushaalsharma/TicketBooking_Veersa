@@ -9,5 +9,6 @@ namespace TicketBooking_WebAPI.Repositories
         Task<Cart> CreateEmptyCart( string userId);
         Task UpdateCartItemQty(string userId, CartItem updatedCartItem);
         Task EmptyCart(string userId);
+        Task<CartItem> DeleteCartItem(Guid itemId);
     }
 }

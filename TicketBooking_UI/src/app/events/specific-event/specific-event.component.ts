@@ -35,7 +35,8 @@ export class SpecificEventComponent {
         price: ticketType.price,
         amount: 0,
         eventId: this.eventId,
-        ticketTypeId: ticketType.id
+        ticketTypeId: ticketType.id,
+        allGood: false
     }));
     }
   }
@@ -77,14 +78,22 @@ export class SpecificEventComponent {
   }
 
   calculateAmount(index: number) {
-    this.ticketQty[index].amount = this.ticketQty[index].quantity * this.ticketQty[index].price;
+    console.log(this.eventData.ticketTypes[index]);
+    if(this.ticketQty[index].quantity > 0 && this.ticketQty[index].quantity <= this.eventData.ticketTypes[index].availableTickets){
+      this.ticketQty[index].amount = this.ticketQty[index].quantity * this.ticketQty[index].price;
+      this.ticketQty[index].allGood = true;
+    }
+    else{
+      this.ticketQty[index].allGood = false;
+      alert("Please choose valid quantity");
+    }
   }
 
   addToCart(cartItem: CartEntryModel) {
 
     console.log(cartItem);
-
-    this.eventService.updateCart(cartItem)
+    if(cartItem.allGood){
+      this.eventService.updateCart(cartItem)
         .subscribe(
             (response) => {
                 console.log(response); // Log entire response to check structure
@@ -99,6 +108,10 @@ export class SpecificEventComponent {
                 alert("Error in adding to cart, try again later.");
             }
         );
+    }
+    else{
+      alert("Invalid Ticket Quantities");
+    }
   }
 
   toCart(){

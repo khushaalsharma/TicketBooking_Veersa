@@ -113,5 +113,20 @@ namespace TicketBooking_WebAPI.Controllers
                 return Ok(new { message = "Ticket added to cart" });
             }
         }
+
+        [HttpDelete]
+        [Route("DeleteCartItem/{Id}")]
+        public async Task<IActionResult> DeleteFromCart([FromRoute] Guid Id)
+        {
+            var result = await cartRepository.DeleteCartItem(Id);
+
+            if (result == null)
+            {
+                return NotFound("CartItem not found or unable to delete");
+            }
+
+            return Ok(result); // or Ok("Deleted successfully") if you don't want to return the item
+        }
+
     }
 }

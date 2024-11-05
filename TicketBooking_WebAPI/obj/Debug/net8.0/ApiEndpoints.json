@@ -63,6 +63,22 @@
   },
   {
     "ContainingType": "TicketBooking_WebAPI.Controllers.CartController",
+    "Method": "DeleteFromCart",
+    "RelativePath": "api/cart/DeleteCartItem/{Id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TicketBooking_WebAPI.Controllers.CartController",
     "Method": "AddToCart",
     "RelativePath": "api/cart/UpdateCart",
     "HttpMethod": "POST",
@@ -86,17 +102,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "venue",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "category",
+        "Name": "searchVal",
         "Type": "System.String",
         "IsRequired": false
       },
@@ -272,6 +278,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "TicketBooking_WebAPI.Controllers.CouponController",
+    "Method": "checkCoupon",
+    "RelativePath": "checkCoupon/{code}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "code",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TicketBooking_WebAPI.Controllers.EventImageController",
     "Method": "Upload",
     "RelativePath": "EventImage/UploadEventBanner",
@@ -305,6 +327,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TicketBooking_WebAPI.Controllers.CouponController",
+    "Method": "newCoupon",
+    "RelativePath": "newCoupon",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "couponDTO",
+        "Type": "TicketBooking_WebAPI.Models.DTO.CouponDTO",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

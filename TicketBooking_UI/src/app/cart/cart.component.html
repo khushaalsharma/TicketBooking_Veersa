@@ -13,9 +13,12 @@
                             <p>Date: {{item.event.date}}</p>
                             <p>Time: {{item.event.time}}</p>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <h5>{{item.ticketType.ticketCategory}}</h5>
                             <h6>{{getAmount(item.price)}}</h6>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-outline-danger" (click)="cancelTicket(item.id)">Delete Item</button>
                         </div>
                     </div>
                     <div class="row">
@@ -29,8 +32,11 @@
                 </div>
             </ng-container>
             <ng-template #emptyCart>
-                <p>Your Cart is empty!</p>
-                <a href="/home">Go to Events</a>
+                <div class="emptyCart">
+                    <strong>Your Cart is empty!</strong>
+                    <p>Start booking events now!!!</p>
+                    <a href="/home"><button class="btn btn-primary">Go to Events</button></a>
+                </div>
             </ng-template>
         </div>
         <div class="col-sm-2"></div>

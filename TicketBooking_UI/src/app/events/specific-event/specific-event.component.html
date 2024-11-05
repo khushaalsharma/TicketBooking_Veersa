@@ -47,23 +47,23 @@
             <div class="row">
                 <div class="col-sm-8">
                     <h6>{{ticketType.ticketCategory}}</h6>
-                    <p>{{priceAccUser(ticketType.price)}} | {{ticketType.availableTickets}} tickets left</p>
+                    <p>{{priceAccUser(ticketType.price)}} | {{ticketType.availableTickets > 0 ? ticketType.availableTickets + "tickets left" : "SOLD OUT"}}</p>
                 </div>
                 <div class="col-sm-4">
                     <label for="ticketNum">Qty:</label>
-                    <input name="ticketNum" type="number" [(ngModel)] = "ticketQty[i].quantity" min="0" (change)="calculateAmount(i)">
+                    <input name="ticketNum" type="number" [(ngModel)] = "ticketQty[i].quantity" (change)="calculateAmount(i)">
                     <p>Amount: {{priceAccUser(ticketQty[i].amount)}}</p>
                 </div>
             </div>
             <div class="">
-                <button class="btn btn-outline-primary" (click)="addToCart(ticketQty[i])">Add to Cart</button>
+                <button class="btn btn-outline-primary" (click)="addToCart(ticketQty[i])">Add to Cart<i class="fa-solid fa-cart-shopping"></i></button>
             </div>
         </div>
     </div>
     <div class="checkout row">
         <div class="col-9"></div>
         <div class="col-3">
-            <button class="btn btn-outline-danger" (click)="toCart()">View Cart</button>
+            <button class="btn btn-outline-danger" (click)="toCart()"><i class="fa-solid fa-cart-shopping"></i>View Cart</button>
         </div>
     </div>
 </section>

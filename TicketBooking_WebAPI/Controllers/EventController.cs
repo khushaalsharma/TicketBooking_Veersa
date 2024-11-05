@@ -73,9 +73,7 @@ namespace TicketBooking_WebAPI.Controllers
         [Route("getAllEvents")]
         [AllowAnonymous]
         public async Task<IActionResult> GetAllEvents(
-            [FromQuery] string? name,
-            [FromQuery] string? venue,
-            [FromQuery] string? category,
+            [FromQuery] string? searchVal,
             [FromQuery] string? From,
             [FromQuery] string? To,
             [FromQuery] string? sortBy,
@@ -96,7 +94,7 @@ namespace TicketBooking_WebAPI.Controllers
             }
 
             // Call the repository method and pass nullable DateOnly values
-            var eventsData = await eventsRepository.GetAllEvents(name, venue, category, fromDate, toDate, sortBy, isAsc);
+            var eventsData = await eventsRepository.GetAllEvents(searchVal, fromDate, toDate, sortBy, isAsc);
 
             var allEvents = new List<EventDTO> { };
 

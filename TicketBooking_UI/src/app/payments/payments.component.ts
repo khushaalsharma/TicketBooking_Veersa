@@ -22,6 +22,7 @@ export class PaymentsComponent implements OnInit {
   creditCardNum !: string;
   cvv !: number;
   expiry !: string;
+  coupon : string | null = null;
 
   constructor(private paymentService: PaymentService, private currency: CurrencyChange) {}
 
@@ -38,6 +39,30 @@ export class PaymentsComponent implements OnInit {
       });
   }
 
+  checkCoupon(){
+    if(this.coupon && this.coupon.length > 0){
+      this.paymentService.checkForCoupon(this.coupon)
+          .subscribe((response) => {
+            if(response.status === 400){
+              alert("Invalid Coupon");
+            }
+            else{
+              console.log(response);
+              this.subamount = this.subamount - ((response.discountPercentage * this.subamount) /100);
+              this.taxes = this.currency.calcTaxes(this.subamount);
+              this.totalAmount = this.subamount + this.taxes;
+            }
+          },  
+          (error) => {
+            alert("Invalid code");
+            console.log(error);
+          }
+        )
+    }
+    else{
+      alert("Enter a coupon code")
+    }
+  }
 
   getAmount(amount: number | undefined) {
     const sessionToken = localStorage.getItem("Token");
@@ -128,6 +153,7 @@ export class PaymentsComponent implements OnInit {
         methodDetail: this.creditCardNum,
         boughtAt: new Date().toISOString(),
         amount: this.totalAmount,
+        couponCode: this.coupon,
         newTickets: []
       }
 
@@ -145,9 +171,14 @@ export class PaymentsComponent implements OnInit {
       this.paymentService.newPayment(paymentData)
                          .subscribe((response) => {
                           console.log(response);
-                          alert("Payment Success!");
-                          alert("Booking added");
-                          window.location.href = "/bookings";
+                          if(response.status === 400){
+                            alert("Bookings can't be made!");
+                          }
+                          else{
+                            alert("Payment Success!");
+                            alert("Booking added");
+                            window.location.href = "/bookings";
+                          }
                          },
                          (error) => {
                           console.log(error);

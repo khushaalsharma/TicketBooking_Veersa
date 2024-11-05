@@ -27,3 +27,8 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.emptyCart{
+    text-align: center;
+    padding-top: 20%;
+}

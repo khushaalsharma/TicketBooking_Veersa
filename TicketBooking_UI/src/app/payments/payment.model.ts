@@ -17,6 +17,7 @@ export interface PaymentModel{
     "methodDetail": string;
     "boughtAt": string;
     "amount": number;
+    "couponCode": string | null;
     "newTickets": PaymentTicket[]
 }
 

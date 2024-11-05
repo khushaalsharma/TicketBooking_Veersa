@@ -3,12 +3,13 @@ import { FormsModule } from '@angular/forms';
 import { EventComponent } from "./event/event.component";
 import { EventsService } from './events.service';
 import type { EventModel } from './event/event.model';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-events',
   standalone: true,
-  imports: [FormsModule, EventComponent],
+  imports: [CommonModule, FormsModule, EventComponent],
   providers: [EventsService],
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.css']
@@ -16,13 +17,13 @@ import type { EventModel } from './event/event.model';
 export class EventsComponent {
   public eventsData : EventModel[] = [];
 
-  eventName = "";
-  eventVenue = "";
-  eventCategory = "";
+  searchVal = "";
   fromDate = "";
   toDate = "";
   sortBy = "price";
   sortOrder = true;
+
+  showFilters = false;
 
   constructor(private eventService: EventsService){} //constructor to use the service object
 
@@ -31,6 +32,10 @@ export class EventsComponent {
     if(events){
       this.eventsData = JSON.parse(events);
     }
+  }
+
+  trackByEventId(index : number, eventData: any){
+    return eventData.id;
   }
 
   ngOnInit(): void { //A lifecycle hook that is called after Angular has initialized all data-bound properties of a directive. Define an ngOnInit() method to handle any additional initialization tasks.
@@ -60,7 +65,7 @@ export class EventsComponent {
     //   }
     // )
 
-    this.eventService.getEventByFilter(this.eventName, this.eventVenue, this.eventCategory, this.fromDate, this.toDate, this.sortBy, this.sortOrder).subscribe(
+    this.eventService.getEventByFilter(this.searchVal, this.fromDate, this.toDate, this.sortBy, this.sortOrder).subscribe(
       (data: EventModel[]) => {
         localStorage.setItem("events", JSON.stringify(data));
         this.getEventsFromStorage();

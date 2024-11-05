@@ -1,4 +1,5 @@
-﻿using TicketBooking_WebAPI.Database;
+﻿using Microsoft.EntityFrameworkCore;
+using TicketBooking_WebAPI.Database;
 using TicketBooking_WebAPI.Models.Domain;
 
 namespace TicketBooking_WebAPI.Repositories
@@ -17,6 +18,20 @@ namespace TicketBooking_WebAPI.Repositories
             await dbContext.SaveChangesAsync();
 
             return paymentData;
+        }
+
+        public async Task UpdateCoupon(string code)
+        {
+            var couponData = await dbContext.Coupons.FirstOrDefaultAsync(c => c.Code == code);
+
+            if (couponData != null)
+            {
+                couponData.UsesLeft = couponData.UsesLeft - 1;
+                dbContext.Coupons.Update(couponData);
+                await dbContext.SaveChangesAsync();
+            }
+
+            return;
         }
     }
 }

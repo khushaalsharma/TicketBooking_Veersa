@@ -4,4 +4,5 @@ export interface CartEntryModel{
     "amount": number;
     "eventId": string;
     "ticketTypeId": string;
+    "allGood": boolean;
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using TicketBooking_WebAPI.Database;
 using TicketBooking_WebAPI.Models.Domain;
 
@@ -38,40 +39,40 @@ namespace TicketBooking_WebAPI.Repositories
             return events;
         }
 
-        public async Task<List<Event>> GetAllEvents(string? name, string? venue, string? category, DateOnly? From, DateOnly? To, string? sortBy, bool isAsc = true)
+        public async Task<List<Event>> GetAllEvents(string? searchVal, DateOnly? From, DateOnly? To, string? sortBy, bool isAsc = true)
         {
-            var events = await dbContext.Events.ToListAsync();
+            var query = dbContext.Events.AsQueryable();
 
-            if (!string.IsNullOrEmpty(name))
+            // Apply search filter if provided
+            if (!string.IsNullOrEmpty(searchVal))
             {
-                events = events.Where(e => e.EventName.Contains(name, StringComparison.OrdinalIgnoreCase)).ToList();
-            }
-            if(!string.IsNullOrEmpty(venue))
-            {
-                events = events.Where(e => e.EventVenue.Contains(venue, StringComparison.OrdinalIgnoreCase)).ToList();
-            }
-            if (!string.IsNullOrEmpty(category))
-            {
-                events = events.Where(e => e.Category.Contains(category, StringComparison.OrdinalIgnoreCase)).ToList();
-            }
-            if(From != null && To != null)
-            {
-                events = events.Where(e => e.Date >= From && e.Date <= To).ToList();
+                query = query.Where(e =>
+                    e.EventName.ToLower().Contains(searchVal.ToLower()) ||
+                    e.EventVenue.ToLower().Contains(searchVal.ToLower()) ||
+                    e.Category.ToLower().Contains(searchVal.ToLower())
+                );
             }
 
+            // Apply date range filter if provided
+            if (From != null && To != null)
+            {
+                query = query.Where(e => e.Date >= From && e.Date <= To);
+            }
+
+            // Apply sorting if provided
             if (!string.IsNullOrEmpty(sortBy))
             {
-                if(sortBy.Equals("price", StringComparison.OrdinalIgnoreCase))
+                if (sortBy.Equals("price", StringComparison.OrdinalIgnoreCase))
                 {
-                    events = isAsc ? events.OrderBy(e => e.MinTicketPrice).ToList() : events.OrderByDescending(e => e.MinTicketPrice).ToList();
+                    query = isAsc ? query.OrderBy(e => e.MinTicketPrice) : query.OrderByDescending(e => e.MinTicketPrice);
                 }
-                if (sortBy.Equals("date", StringComparison.OrdinalIgnoreCase))
+                else if (sortBy.Equals("date", StringComparison.OrdinalIgnoreCase))
                 {
-                    events = isAsc ? events.OrderBy(e => e.Date).ToList() : events.OrderByDescending(e => e.Date).ToList();
+                    query = isAsc ? query.OrderBy(e => e.Date) : query.OrderByDescending(e => e.Date);
                 }
             }
 
-            return events;
+            return await query.ToListAsync();
         }
     }
 }

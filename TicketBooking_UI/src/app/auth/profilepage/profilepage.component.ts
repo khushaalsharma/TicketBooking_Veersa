@@ -27,7 +27,7 @@ export class ProfilepageComponent {
     phoneNumber: "",
     preferredCurr: "",
     preferredLang: "",
-    url: ""
+    url: "assets/Images/defaultprofile.png"
   }
 
   constructor(private authservice: AuthService){}

@@ -16,6 +16,7 @@ namespace TicketBooking_WebAPI.Models.DTO
         [Required]
         [Column(TypeName = "decimal(18,2)")]
         public decimal Amount { get; set; }
+        public string? CouponCode { get; set; }
         [Required]
         [TicketValidation]
         public List<TicketData> NewTickets { get; set; }

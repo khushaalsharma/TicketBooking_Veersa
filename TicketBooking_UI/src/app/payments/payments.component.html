@@ -53,8 +53,8 @@
                 </div>
             </div>
             <div class="coupon">
-                <input type="text" placeholder="Add Coupon" aria-label="Add Coupon">
-                <button class="btn btn-dark">Apply Code</button>
+                <input type="text" placeholder="Add Coupon" aria-label="Add Coupon" [(ngModel)]="coupon">
+                <button class="btn btn-dark" (click)="checkCoupon()">Apply Code</button>
             </div>
         </div>
         <div class="col-md-6 paymentCard">

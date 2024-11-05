@@ -1,16 +1,29 @@
 <div id="BookerEvents">
-    <h2>Events For You</h2>
-    <div class="filters">
+    <div class="row">
+        <div class="col-11">
+            <h2>Events For You</h2>
+        </div>
+
+    <!-- Toggle Filters Button -->
+        <div class="col-1">
+            <button (click)="showFilters = !showFilters" class="btn btn-primary">
+                Filters
+            </button>
+        </div>
+    </div>
+
+    <!-- Filters Section - Visibility Controlled by showFilters -->
+    <div class="filters" *ngIf="showFilters">
         <h4>Apply Filters</h4>
         <form (ngSubmit)="onFilter()">
             <div>
-                <input placeholder="By Name" name="eventName" [(ngModel)]="eventName">
-                <input placeholder="By Category" name="eventCategory" [(ngModel)]="eventCategory">
-                <input placeholder="By Venue" name="eventVenue" [(ngModel)]="eventVenue">
-                <label name="from">From</label>
-                <input type="date" for="from" name="fromDate" [(ngModel)]="fromDate">
-                <label name="to">To</label>
-                <input type="date" for="to" name="toDate" [(ngModel)]="toDate">
+                <input placeholder="Search by Name, Category or Venue" id="searchVal" name="searchVal" [(ngModel)]="searchVal">
+            </div>
+            <div class="dateFilters">
+                <label for="fromDate">From</label>
+                <input type="date" id="fromDate" name="fromDate" [(ngModel)]="fromDate">
+                <label for="toDate">To</label>
+                <input type="date" id="toDate" name="toDate" [(ngModel)]="toDate">
             </div>
             <div class="sort-section">
                 <label>Sort By: </label>
@@ -23,19 +36,19 @@
                     <option value="false">High to Low</option>
                 </select>
             </div>
-        
-            <button class="btn btn-danger" type="submit">Search</button>
-        </form>
 
+            <button class="btn btn-danger" type="submit"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+        </form>
     </div>
+
     <div id="app-events">
-        @if(eventsData.length > 0){
-            @for(eventData of eventsData; track eventData.id){
-                <app-event [eventData]="eventData" />
-            }
-        }
-        @else {
+        <ng-container *ngIf="eventsData.length > 0; else noEvents">
+            <ng-container *ngFor="let eventData of eventsData; trackBy: trackByEventId">
+                <app-event [eventData]="eventData"></app-event>
+            </ng-container>
+        </ng-container>
+        <ng-template #noEvents>
             <h6>No events found!</h6>
-        }
+        </ng-template>
     </div>
 </div>

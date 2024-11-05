@@ -2,9 +2,9 @@
 .event-card {
     width: 100%;
     /* Allow the card to scale with the screen size */
-    max-width: 300px;
+    max-width: 400px;
     /* Max width for cards to maintain consistency */
-    min-width: 260px;
+    min-width: 300px;
     /* Minimum width to ensure content readability */
     height: 100%;
     /* Automatically adjust height */
@@ -16,7 +16,6 @@
     justify-content: space-between;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 10px;
     box-sizing: border-box;
 }
 
@@ -26,7 +25,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     /* Ensures alignment is centered */
-    gap: 15px;
+    gap: 5px;
 }
 
 /* Event carousel container */
